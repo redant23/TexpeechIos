@@ -27,11 +27,20 @@ export default class Intro extends React.Component {
         </Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={this.props.onPressButtonPlay.bind(this)}
+          onPress={this.props.onPressButtonPlay.bind(this, 'on')}
           accessibilityLabel="Get Started button"
         >
           <Text style={styles.btnTest}>
-            음악샘플플레이
+            STT Test On
+        </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={this.props.onPressButtonPlay.bind(this, 'off')}
+          accessibilityLabel="Get Started button"
+        >
+          <Text style={styles.btnTest}>
+            STT Test Off
         </Text>
         </TouchableOpacity>
       </View>

@@ -6,14 +6,14 @@
  * @flow
  */
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, NativeAppEventEmitter } from 'react-native';
 import Intro from './Views/Intro/Intro.js';
 import Chat from './Views/Chat/Chat.js';
 import IntroModal from './Views/Modal/IntroModal.js';
 import PropTypes from 'prop-types';
 import firebase from './Settings/Firebase.js';
 // var SoundPlayer = require('react-native-sound');
-
+var SpeechToText = require('react-native-speech-to-text-ios');
 // const instructions = Platform.select({
 //   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
 //   android:
@@ -36,31 +36,6 @@ export default class App extends React.Component {
       pageState: 'intro',
       toggleValue: false,
       myMsgs: null,
-      users: [
-        {
-          nickname: '불개미',
-          joinDate: date2,
-          leftDate: null,
-        }
-      ],
-      messages: [
-        {
-          msg_who: 'Mike',
-          msg_body: "밥 뭐먹을래?",
-          send_date: date2,
-          on_voice_mode: false,
-          voice_url: null,
-          img_url: null,
-        },
-        {
-          msg_who: '불개미',
-          msg_body: "너가골라?",
-          send_date: date2,
-          on_voice_mode: true,
-          voice_url: 'https://d1.awsstatic.com/product-marketing/Polly/voices/seoyeon.9dbe36e9490fba13c2387ad65c6b69517bfbf7b5.wav',
-          img_url: null,
-        }
-      ]
     }
   }
 
@@ -98,6 +73,18 @@ export default class App extends React.Component {
     //     // if (latestEventNumber < key.eventNumber) {
     //     //   latestEventNumber = key.eventNumber
     //     // }
+
+    this.subscription = NativeAppEventEmitter.addListener(
+      'SpeechToText',
+      (result) => {
+        if (result.error) {
+          alert(JSON.stringify(result.error));
+        } else {
+          console.warn(result.bestTranscription.formattedString);
+        }
+      }
+    );
+
   }
 
   onPressButtonPlay() {
@@ -108,6 +95,11 @@ export default class App extends React.Component {
     //     }
     //   }));
     // }
+    SpeechToText.startRecognition("ko-KR");
+  }
+
+  offPressButtonPlay() {
+    SpeechToText.finishRecognition();
   }
 
   pageStateChange(pageName) {
@@ -200,8 +192,12 @@ export default class App extends React.Component {
         {
           this.state.pageState === 'intro' &&
           <Intro
-            onPressButtonPlay={() => {
-              this.onPressButtonPlay();
+            onPressButtonPlay={(key) => {
+              if (key === 'on') {
+                this.onPressButtonPlay();
+              } else {
+                this.offPressButtonPlay();
+              }
             }}
             pageStateChange={(pageName) => {
               this.pageStateChange(pageName);
@@ -277,5 +273,5 @@ const appStyles = StyleSheet.create({
 // });
 
 App.propTypes = {
-  text: PropTypes.string.isRequired,
+
 };
