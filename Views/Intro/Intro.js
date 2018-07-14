@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Image, TouchableOpacity, Button, StyleSheet, Text, View } from 'react-native';
-import { Actions } from 'react-native-router-flux';
 
 
 export default class Intro extends React.Component {

@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal, TextInput, YellowBox, ToastAndroid, Platform, TouchableHighlight, TouchableOpacity, Button, StyleSheet, Text, View } from 'react-native';
 import Intro from '../Intro/Intro.js';
 import Chat from '../Chat/Chat.js';
-import firebase from '../../Settings/Firebase.js';
+// import firebase from '../../Settings/Firebase.js';
 
 export default class IntroModal extends React.Component {
 

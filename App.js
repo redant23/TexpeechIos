@@ -10,6 +10,7 @@ import { StyleSheet, View } from 'react-native';
 import Intro from './Views/Intro/Intro.js';
 import Chat from './Views/Chat/Chat.js';
 import IntroModal from './Views/Modal/IntroModal.js';
+import PropTypes from 'prop-types';
 // import firebase from './Settings/Firebase.js';
 // var SoundPlayer = require('react-native-sound');
 
@@ -235,6 +236,12 @@ const appStyles = StyleSheet.create({
     flex: 1,
   }
 });
+
+
+// App.propTypes = {
+//   props: PropTypes.string
+// }
+
 // type Props = {};
 
 // export default class App extends Component<Props> {
@@ -268,3 +275,7 @@ const appStyles = StyleSheet.create({
 //     marginBottom: 5,
 //   },
 // });
+
+App.propTypes = {
+  text: PropTypes.string.isRequired,
+};
