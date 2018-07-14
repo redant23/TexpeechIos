@@ -11,6 +11,8 @@ target 'TexpeechIos' do
   target 'TexpeechIos-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'TextToSpeech', :path => '../node_modules/react-native-tts'
+
   end
 
   target 'TexpeechIosTests' do

@@ -6,7 +6,7 @@
  * @flow
  */
 import React from 'react';
-import { StyleSheet, View, NativeAppEventEmitter } from 'react-native';
+import { StyleSheet, View, NativeAppEventEmitter, NativeModules, NativeEventEmitter } from 'react-native';
 import Intro from './Views/Intro/Intro.js';
 import Chat from './Views/Chat/Chat.js';
 import IntroModal from './Views/Modal/IntroModal.js';
@@ -14,6 +14,8 @@ import PropTypes from 'prop-types';
 import firebase from './Settings/Firebase.js';
 // var SoundPlayer = require('react-native-sound');
 var SpeechToText = require('react-native-speech-to-text-ios');
+import Tts from 'react-native-tts';
+
 // const instructions = Platform.select({
 //   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
 //   android:
@@ -36,6 +38,7 @@ export default class App extends React.Component {
       pageState: 'intro',
       toggleValue: false,
       myMsgs: null,
+      sttResults: null,
     }
   }
 
@@ -80,10 +83,23 @@ export default class App extends React.Component {
         if (result.error) {
           alert(JSON.stringify(result.error));
         } else {
-          console.warn(result.bestTranscription.formattedString);
+          if (result.bestTranscription.formattedString.includes('전송')) {
+            let sttResult = result.bestTranscription.formattedString;
+            this.setState({
+              sttResults: sttResult,
+            })
+            SpeechToText.finishRecognition();
+            console.warn(this.state.sttResults);
+            SpeechToText.startRecognition("ko-KR");
+          }
         }
       }
     );
+
+    const ee = new NativeEventEmitter(NativeModules.TextToSpeech);
+    ee.addListener('tts-start', () => { });
+    ee.addListener('tts-finish', () => { });
+    ee.addListener('tts-cancel', () => { });
 
   }
 
@@ -95,11 +111,17 @@ export default class App extends React.Component {
     //     }
     //   }));
     // }
+
+
+    Tts.speak('dongjun');
+
     SpeechToText.startRecognition("ko-KR");
   }
 
   offPressButtonPlay() {
-    SpeechToText.finishRecognition();
+    Tts.stop();
+    // SpeechToText.finishRecognition();
+
   }
 
   pageStateChange(pageName) {
