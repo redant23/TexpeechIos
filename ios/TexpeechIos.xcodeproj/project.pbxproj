@@ -39,10 +39,10 @@
 		44D964DA6455EBE34C348B8B /* libPods-TexpeechIos.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C43A75A3FC375BCE31EBAD /* libPods-TexpeechIos.a */; };
 		6BB7683720F9BCC600BC0EF2 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		6BB7683920F9D9A200BC0EF2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BB7683820F9D9A100BC0EF2 /* GoogleService-Info.plist */; };
+		7BADE0BDD4324339BF65E42D /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF0C1D75FE4144BA8B699936 /* libRNFirebase.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		B36D15847612F1EAAE4D745C /* libPods-TexpeechIosTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2931F41602BEE277754A73DF /* libPods-TexpeechIosTests.a */; };
-		F7AC155FBB7F44DCA5BDEFE3 /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E3A36BA70649398947539C /* libRNFirebase.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -298,9 +298,9 @@
 			remoteGlobalIDString = 2D2A28201D9B03D100D4039D;
 			remoteInfo = "RCTAnimation-tvOS";
 		};
-		6BB7687B20F9E1AA00BC0EF2 /* PBXContainerItemProxy */ = {
+		6BB768D720F9EF6700BC0EF2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = C80994D533DC40CEB1DCA14D /* RNFirebase.xcodeproj */;
+			containerPortal = 17EE56792B8840FEA9874EC8 /* RNFirebase.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RNFirebase;
@@ -349,6 +349,7 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = TexpeechIos/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = TexpeechIos/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
+		17EE56792B8840FEA9874EC8 /* RNFirebase.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNFirebase.xcodeproj; path = "../node_modules/react-native-firebase/ios/RNFirebase.xcodeproj"; sourceTree = "<group>"; };
 		20533D1673AB5FE15D7BBB88 /* Pods-TexpeechIosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TexpeechIosTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TexpeechIosTests/Pods-TexpeechIosTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2931F41602BEE277754A73DF /* libPods-TexpeechIosTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TexpeechIosTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E47B1E0B4A5D006451C7 /* TexpeechIos-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TexpeechIos-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -363,10 +364,9 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		95CE7D3A76E23A9458C4D135 /* Pods-TexpeechIosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TexpeechIosTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TexpeechIosTests/Pods-TexpeechIosTests.release.xcconfig"; sourceTree = "<group>"; };
-		95E3A36BA70649398947539C /* libRNFirebase.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFirebase.a; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
+		AF0C1D75FE4144BA8B699936 /* libRNFirebase.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFirebase.a; sourceTree = "<group>"; };
 		BB55F45839D7BBA7850A076B /* libPods-TexpeechIos-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TexpeechIos-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C80994D533DC40CEB1DCA14D /* RNFirebase.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNFirebase.xcodeproj; path = "../node_modules/react-native-firebase/ios/RNFirebase.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -396,7 +396,7 @@
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				44D964DA6455EBE34C348B8B /* libPods-TexpeechIos.a in Frameworks */,
-				F7AC155FBB7F44DCA5BDEFE3 /* libRNFirebase.a in Frameworks */,
+				7BADE0BDD4324339BF65E42D /* libRNFirebase.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -567,15 +567,15 @@
 		6BB7685220F9E1A900BC0EF2 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				95E3A36BA70649398947539C /* libRNFirebase.a */,
+				AF0C1D75FE4144BA8B699936 /* libRNFirebase.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
-		6BB7687820F9E1AA00BC0EF2 /* Products */ = {
+		6BB768D420F9EF6600BC0EF2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6BB7687C20F9E1AA00BC0EF2 /* libRNFirebase.a */,
+				6BB768D820F9EF6700BC0EF2 /* libRNFirebase.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -604,7 +604,7 @@
 				832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */,
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
-				C80994D533DC40CEB1DCA14D /* RNFirebase.xcodeproj */,
+				17EE56792B8840FEA9874EC8 /* RNFirebase.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -836,8 +836,8 @@
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
 				{
-					ProductGroup = 6BB7687820F9E1AA00BC0EF2 /* Products */;
-					ProjectRef = C80994D533DC40CEB1DCA14D /* RNFirebase.xcodeproj */;
+					ProductGroup = 6BB768D420F9EF6600BC0EF2 /* Products */;
+					ProjectRef = 17EE56792B8840FEA9874EC8 /* RNFirebase.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1089,11 +1089,11 @@
 			remoteRef = 5E9157341DD0AC6500FF2AA8 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		6BB7687C20F9E1AA00BC0EF2 /* libRNFirebase.a */ = {
+		6BB768D820F9EF6700BC0EF2 /* libRNFirebase.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRNFirebase.a;
-			remoteRef = 6BB7687B20F9E1AA00BC0EF2 /* PBXContainerItemProxy */;
+			remoteRef = 6BB768D720F9EF6700BC0EF2 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		78C398B91ACF4ADC00677621 /* libRCTLinking.a */ = {
@@ -1369,6 +1369,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = XK396U7BFG;
+				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
@@ -1393,6 +1394,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XK396U7BFG;
+				ENABLE_BITCODE = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",

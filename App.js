@@ -138,8 +138,8 @@ export default class App extends React.Component {
     })
     let eventNumber = this.state.eventNumber + 1;
     // ** recent codes **
-    // var eventRef = firebase.database().ref(`/event-datas/${eventNumber}`);
-    // eventRef.update(eventData);
+    var eventRef = firebase.database().ref(`/event-datas/${eventNumber}`);
+    eventRef.update(eventData);
   }
 
   setModalVisible(visible) {
