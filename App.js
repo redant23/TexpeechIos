@@ -11,7 +11,7 @@ import Intro from './Views/Intro/Intro.js';
 import Chat from './Views/Chat/Chat.js';
 import IntroModal from './Views/Modal/IntroModal.js';
 import PropTypes from 'prop-types';
-// import firebase from './Settings/Firebase.js';
+import firebase from './Settings/Firebase.js';
 // var SoundPlayer = require('react-native-sound');
 
 // const instructions = Platform.select({
@@ -79,15 +79,15 @@ export default class App extends React.Component {
     var renderData;
     var latestEventNumber = 0;
     // ** recent codes **
-    // var eventRef = firebase.database().ref('event-datas');
-    // eventRef.on('value', (snapshot) => {
-    //   renderData = snapshot.val();
-    //   latestEventNumber = renderData.length - 1;
-    //   this.setState({
-    //     currentDatas: renderData,
-    //     eventNumber: latestEventNumber,
-    //   });
-    // });
+    var eventRef = firebase.database().ref('event-datas');
+    eventRef.on('value', (snapshot) => {
+      renderData = snapshot.val();
+      latestEventNumber = renderData.length - 1;
+      this.setState({
+        currentDatas: renderData,
+        eventNumber: latestEventNumber,
+      });
+    });
 
     //   var eventRef = firebase.database().ref('event-datas');
     // eventRef.once('value').then((snapshot) => {
@@ -150,10 +150,10 @@ export default class App extends React.Component {
     }
     let eventNumber = this.state.eventNumber + 1;
     // ** recent codes **
-    // var eventRef = firebase.database().ref(`/event-datas/${eventNumber}`);
-    // eventRef.update(eventData);
-    // var userRef = firebase.database().ref(`/current-users/${eventNumber}`);
-    // userRef.update({ nickname: this.state.username });
+    var eventRef = firebase.database().ref(`/event-datas/${eventNumber}`);
+    eventRef.update(eventData);
+    var userRef = firebase.database().ref(`/current-users/${eventNumber}`);
+    userRef.update({ nickname: this.state.username });
     this.setState({
       modalVisible: visible,
     });
