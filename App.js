@@ -11,10 +11,13 @@ import Intro from './Views/Intro/Intro.js';
 import Chat from './Views/Chat/Chat.js';
 import IntroModal from './Views/Modal/IntroModal.js';
 import PropTypes from 'prop-types';
+
 import firebase from './Settings/Firebase.js';
 // var SoundPlayer = require('react-native-sound');
 var SpeechToText = require('react-native-speech-to-text-ios');
+var _ = require('lodash');
 import Tts from 'react-native-tts';
+
 
 // const instructions = Platform.select({
 //   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -39,6 +42,7 @@ export default class App extends React.Component {
       toggleValue: false,
       myMsgs: null,
       sttResults: null,
+      stopperCount: 0,
     }
   }
 
@@ -54,6 +58,7 @@ export default class App extends React.Component {
 
   componentDidMount() {
     // firebase.database().goOnline();
+    Tts.setDefaultLanguage('ko-KR');
     var renderData;
     var latestEventNumber = 0;
     // ** recent codes **
@@ -77,20 +82,21 @@ export default class App extends React.Component {
     //     //   latestEventNumber = key.eventNumber
     //     // }
 
+
+
     this.subscription = NativeAppEventEmitter.addListener(
       'SpeechToText',
       (result) => {
         if (result.error) {
-          alert(JSON.stringify(result.error));
+          console.warn(JSON.stringify(result.error));
         } else {
           if (result.bestTranscription.formattedString.includes('전송')) {
-            let sttResult = result.bestTranscription.formattedString;
+            let sttResult = result.bestTranscription.formattedString.slice(0, -2);
             this.setState({
               sttResults: sttResult,
             })
             SpeechToText.finishRecognition();
-            console.warn(this.state.sttResults);
-            SpeechToText.startRecognition("ko-KR");
+            SpeechToText.startRecognition('ko-KR');
           }
         }
       }
@@ -112,16 +118,20 @@ export default class App extends React.Component {
     //   }));
     // }
 
-
-    Tts.speak('dongjun');
-
     SpeechToText.startRecognition("ko-KR");
   }
 
   offPressButtonPlay() {
-    Tts.stop();
+    // Tts.stop();
     // SpeechToText.finishRecognition();
+    // console.warn(this.state.sttResults);
+    SpeechToText.finishRecognition();
+    // Tts.getInitStatus().then(() => {
+    setTimeout(() => { Tts.speak(this.state.sttResults); }, 500)
 
+
+    setTimeout(() => { SpeechToText.startRecognition('ko-KR'); }, 5000)
+    // });
   }
 
   pageStateChange(pageName) {
