@@ -7,10 +7,11 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   headerBarBoxWrap: {
-    padding: 8,
+    paddingBottom: 8,
     paddingLeft: 16,
     paddingRight: 16,
-    height: 54,
+    paddingTop: 24,
+    height: 72,
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#fff',
@@ -47,8 +48,8 @@ const styles = StyleSheet.create({
   voiceModeToggleBox: {
     position: 'absolute',
     right: 20,
-    top: 74,
-    width: 120,
+    top: 94,
+    width: 140,
     height: 36,
     backgroundColor: '#fff',
     opacity: 0.8,
@@ -105,8 +106,6 @@ const styles = StyleSheet.create({
   },
   chatInputBoxWrap: {
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
     paddingTop: 8,
     paddingBottom: 8,
     height: 40,

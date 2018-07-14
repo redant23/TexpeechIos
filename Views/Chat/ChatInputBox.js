@@ -33,7 +33,7 @@ export default class ChatInputBox extends React.Component {
 
   render() {
     return (
-      <KeyboardAvoidingView style={styles.chatInputBoxWrap} behavior="height">
+      <KeyboardAvoidingView style={styles.chatInputBoxWrap} behavior="padding" keyboardVerticalOffset={36}>
         <Image style={styles.chatInputIcon} source={require('../../Sources/Images/icon-cam.png')} />
         <Image style={styles.chatInputIcon} source={require('../../Sources/Images/icon-gallery.png')} />
         <TextInput style={styles.chatInputBox} value={this.state.text} onChangeText={this.textInputChange.bind(this)} placeholder={'메시지를 입력하세요'}></TextInput>

@@ -17,10 +17,6 @@
 
 @import Firebase;
 
-//add
-@import FirebaseInstanceID;
-//
-
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
