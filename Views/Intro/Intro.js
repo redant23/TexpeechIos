@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Image, TouchableOpacity, Button, StyleSheet, Text, View } from 'react-native';
 
 
@@ -24,23 +24,6 @@ export default class Intro extends React.Component {
         >
           <Text style={styles.btnTest}>
             시작하기
-        </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={this.props.onPressButtonPlay.bind(this, 'on')}
-          accessibilityLabel="Get Started button"
-        >
-          <Text style={styles.btnTest}>
-            STT Test On
-        </Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          onPress={this.props.onPressButtonPlay.bind(this, 'off')}
-          accessibilityLabel="Get Started button"
-        >
-          <Text style={styles.btnTest}>
-            STT Test Off
         </Text>
         </TouchableOpacity>
       </View>

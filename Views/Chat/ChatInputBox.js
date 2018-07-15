@@ -10,7 +10,6 @@ export default class ChatInputBox extends React.Component {
     }
   }
 
-
   onPressButton() {
     let tempText = this.state.text;
     this.props.sendMyMsg(tempText);
