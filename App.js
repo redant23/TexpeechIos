@@ -24,6 +24,8 @@ export default class App extends React.Component {
       toggleValue: false,
       myMsgs: null,
       sttResults: null,
+      voiceMode: false,
+      sttCount: 0,
     }
   }
 
@@ -44,6 +46,27 @@ export default class App extends React.Component {
     eventRef.on('value', (snapshot) => {
       renderData = snapshot.val();
       latestEventNumber = renderData.length - 1;
+      if (this.state.voiceMode) {
+        // console.warn('voicemodeOn')
+        let voicePrintTarget = renderData[renderData.length - 1];
+        if (voicePrintTarget.type === 'Msg') {
+          // console.warn('MsgType')
+          SpeechToText.finishRecognition();
+          setTimeout(() => { Tts.speak(`${voicePrintTarget.nickname}'님의 말,`); }, 100);
+          setTimeout(() => { Tts.speak(voicePrintTarget.message.text); }, 500);
+          setTimeout(() => {
+            SpeechToText.startRecognition('ko-KR');
+            this.setState({
+              sttCount: 0,
+            });
+          }, 2000);
+        } else if (voicePrintTarget.type === 'join') {
+          // console.warn('joinType')
+          SpeechToText.finishRecognition();
+          setTimeout(() => { Tts.speak(`${voicePrintTarget.nickname}'님이 들어오셨습니다.`); }, 100);
+          setTimeout(() => { SpeechToText.startRecognition('ko-KR'); }, 2000)
+        }
+      }
       this.setState({
         currentDatas: renderData,
         eventNumber: latestEventNumber,
@@ -55,33 +78,31 @@ export default class App extends React.Component {
       'SpeechToText',
       (result) => {
         if (result.error) {
-          console.warn(JSON.stringify(result.error));
+          // console.warn(JSON.stringify(result.error));
         } else {
-          if (result.bestTranscription.formattedString.includes('전송')) {
+          if (result.bestTranscription.formattedString.includes(' 전송')) {
             let sttResult = result.bestTranscription.formattedString.slice(0, -2);
-            this.setState({
-              sttResults: sttResult,
-            })
-            this.sendMyMsg(sttResult, 'stt');
-            SpeechToText.finishRecognition();
-            SpeechToText.startRecognition('ko-KR');
+            let debounceAction = _.debounce(() => { this.sttAction(sttResult); }, 500, {
+              leading: false, trailing: true
+            });
+            debounceAction();
           }
         }
       }
-
     );
-
   }
 
-  onPressButtonPlay() { // Temp
-
-  }
-
-  offPressButtonPlay() { // Temp
-    // STT Event Stop -> TTS Event Start -> STT Event Start
-    SpeechToText.finishRecognition();
-    setTimeout(() => { Tts.speak(this.state.sttResults); }, 500)
-    setTimeout(() => { SpeechToText.startRecognition('ko-KR'); }, 5000)
+  sttAction(sttResult) { // Temp
+    if (!this.state.sttCount) {
+      // console.warn('hey')
+      let sttCount = ++this.state.sttCount;
+      this.setState({
+        sttResults: sttResult,
+        sttCount: sttCount,
+      })
+      this.sendMyMsg(sttResult, 'stt');
+      // SpeechToText.finishRecognition();
+    }
   }
 
   pageStateChange(pageName) {
@@ -93,11 +114,15 @@ export default class App extends React.Component {
   updateToggleValue(val) {
     if (val) {
       // STT Event Start
+      this.setState({
+        voiceMode: true,
+      })
       SpeechToText.startRecognition("ko-KR");
     } else {
       SpeechToText.finishRecognition();
       this.setState({
         sttResults: null,
+        voiceMode: false,
       })
     }
     this.setState({
@@ -131,9 +156,9 @@ export default class App extends React.Component {
       myMsgs: eventData,
     })
     let eventNumber = this.state.eventNumber + 1;
-    // ** recent codes **
+
     var eventRef = firebase.database().ref(`/event-datas/${eventNumber}`);
-    eventRef.update(eventData);
+    eventRef.update(eventData)
   }
 
   setModalVisible(visible) {
