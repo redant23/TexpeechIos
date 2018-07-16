@@ -47,24 +47,27 @@ export default class App extends React.Component {
       renderData = snapshot.val();
       latestEventNumber = renderData.length - 1;
       if (this.state.voiceMode) {
+        SpeechToText.finishRecognition();
         // console.warn('voicemodeOn')
         let voicePrintTarget = renderData[renderData.length - 1];
         if (voicePrintTarget.type === 'Msg') {
           // console.warn('MsgType')
-          SpeechToText.finishRecognition();
-          setTimeout(() => { Tts.speak(`${voicePrintTarget.nickname}'님의 말,`); }, 100);
-          setTimeout(() => { Tts.speak(voicePrintTarget.message.text); }, 500);
+          let textTerm = voicePrintTarget.nickname.length * 500 + 500;
+          let recordStartTerm = textTerm + voicePrintTarget.message.text.length * 500 + 500;
+          setTimeout(() => {
+            Tts.speak(`${voicePrintTarget.nickname}'님의 말,`);
+            Tts.speak(voicePrintTarget.message.text);
+          }, 500);
           setTimeout(() => {
             SpeechToText.startRecognition('ko-KR');
             this.setState({
               sttCount: 0,
             });
-          }, 2000);
+          }, recordStartTerm + 2500);
         } else if (voicePrintTarget.type === 'join') {
-          // console.warn('joinType')
-          SpeechToText.finishRecognition();
-          setTimeout(() => { Tts.speak(`${voicePrintTarget.nickname}'님이 들어오셨습니다.`); }, 100);
-          setTimeout(() => { SpeechToText.startRecognition('ko-KR'); }, 2000)
+          let textTerm = voicePrintTarget.nickname.length * 500 + 500;
+          setTimeout(() => { Tts.speak(`${voicePrintTarget.nickname}'님이 들어오셨습니다.`); }, 500);
+          setTimeout(() => { SpeechToText.startRecognition('ko-KR'); }, textTerm + 2500);
         }
       }
       this.setState({
@@ -78,7 +81,7 @@ export default class App extends React.Component {
       'SpeechToText',
       (result) => {
         if (result.error) {
-          // console.warn(JSON.stringify(result.error));
+          console.warn(JSON.stringify(result.error));
         } else {
           if (result.bestTranscription.formattedString.includes(' 전송')) {
             let sttResult = result.bestTranscription.formattedString.slice(0, -2);
@@ -92,16 +95,14 @@ export default class App extends React.Component {
     );
   }
 
-  sttAction(sttResult) { // Temp
+  sttAction(sttResult) {
     if (!this.state.sttCount) {
-      // console.warn('hey')
       let sttCount = ++this.state.sttCount;
       this.setState({
         sttResults: sttResult,
         sttCount: sttCount,
       })
       this.sendMyMsg(sttResult, 'stt');
-      // SpeechToText.finishRecognition();
     }
   }
 

@@ -10,8 +10,13 @@ import ChatVoiceBox from './ChatVoiceBox.js';
 import ChatHeaderBar from './ChatHeaderBar.js';
 
 export default class Chat extends React.Component {
+
   scrollToEnd() {
-    this.refs.scrollView.scrollToEnd();
+    setTimeout(this.refs.scrollView.scrollToEnd, 50);
+  }
+
+  componentDidUpdate() {
+    this.scrollToEnd()
   }
 
   render() {
