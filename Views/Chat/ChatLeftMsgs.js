@@ -23,22 +23,25 @@ export default class ChatLeftMsgs extends React.Component {
           </View>
           <View style={styles.leftMsgContainerMsgs}>
             <Text style={styles.nicknameText}>{this.props.msgDatas.nickname}</Text>
-            <View style={styles.msgBox}>
-              <Text style={styles.msgFont}>{this.props.msgDatas.message.text}
-              </Text>
-            </View>
-          </View>
-          <View style={styles.leftMsgContainerModeDates}>
-            {
-              this.props.msgDatas.message.on_voice_mode &&
-              <View style={styles.yourMsgMicIconWrap}>
-                <Image style={styles.micIcon} source={require('../../Sources/Images/icon-mic-g.png')} />
+            <View style={styles.leftmsgBoxNewWrap}>
+              <View style={styles.msgBox}>
+                <Text style={styles.msgFont}>{this.props.msgDatas.message.text}
+                </Text>
               </View>
-            }
-            <View style={styles.msgDateWrap}>
-              <Text style={styles.yourMsgDate}>{this.props.msgDatas.created_at}</Text>
+              <View style={styles.leftMsgContainerModeDates}>
+                {
+                  this.props.msgDatas.message.on_voice_mode &&
+                  <View style={styles.yourMsgMicIconWrap}>
+                    <Image style={styles.micIcon} source={require('../../Sources/Images/icon-mic-g.png')} />
+                  </View>
+                }
+                <View style={styles.msgDateWrap}>
+                  <Text style={styles.yourMsgDate}>{this.props.msgDatas.created_at}</Text>
+                </View>
+              </View>
             </View>
           </View>
+
         </View>
 
       </View>

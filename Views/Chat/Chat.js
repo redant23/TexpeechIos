@@ -74,7 +74,11 @@ export default class Chat extends React.Component {
                 this.scrollToEnd();
                 this.props.sendMyMsg(text);
               }}
-            /> : <ChatVoiceBox />
+            /> : <ChatVoiceBox
+              onSpeak={() => {
+                this.props.onSpeak();
+              }}
+            />
         }
       </View>
     );

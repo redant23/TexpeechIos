@@ -12,6 +12,7 @@
     "react": "16.4.1",
     "react-native": "0.56.0",
     "react-native-firebase": "^4.3.6",
+    "react-native-sound": "^0.10.9",
     "react-native-speech-to-text-ios": "^1.0.4",
     "react-native-tts": "^1.5.1"
   },

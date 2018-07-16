@@ -9,6 +9,14 @@ import firebase from './Settings/Firebase.js';
 
 var _ = require('lodash');
 var SpeechToText = require('react-native-speech-to-text-ios');
+var Sound = require('react-native-sound');
+Sound.setCategory('Playback');
+var voiceModeOn = new Sound('voice-mode-on.wav', Sound.MAIN_BUNDLE, (error) => {
+  if (error) {
+    return;
+  }
+});
+
 import Tts from 'react-native-tts';
 
 
@@ -47,27 +55,92 @@ export default class App extends React.Component {
       renderData = snapshot.val();
       latestEventNumber = renderData.length - 1;
       if (this.state.voiceMode) {
-        SpeechToText.finishRecognition();
+
+        // SpeechToText.finishRecognition();
+        // if (this.subscription != null) {
+        //   console.warn('deleteSubscription')
+        //   this.subscription.remove();
+        //   this.subscription = null;
+        //   Tts.speak('마음껏 즐겨');
+        // }
+
         // console.warn('voicemodeOn')
         let voicePrintTarget = renderData[renderData.length - 1];
         if (voicePrintTarget.type === 'Msg') {
           // console.warn('MsgType')
-          let textTerm = voicePrintTarget.nickname.length * 500 + 500;
+          let textTerm = voicePrintTarget.nickname.length * 300 + 500;
           let recordStartTerm = textTerm + voicePrintTarget.message.text.length * 500 + 500;
+
+
+          Tts.speak(`${voicePrintTarget.nickname}님이 말하길,`);
+          Tts.speak(voicePrintTarget.message.text);
+
           setTimeout(() => {
-            Tts.speak(`${voicePrintTarget.nickname}'님의 말,`);
-            Tts.speak(voicePrintTarget.message.text);
-          }, 500);
-          setTimeout(() => {
-            SpeechToText.startRecognition('ko-KR');
+            // SpeechToText.finishRecognition();
+            // if (this.subscription != null) {
+            //   this.subscription.remove();
+            //   this.subscription = null;
+            // }
+
+            voiceModeOn.play();
+            // STT Event Listener
+            // this.subscription = NativeAppEventEmitter.addListener(
+            //   'SpeechToText',
+            //   (result) => {
+            //     if (result.error) {
+            //       console.warn(JSON.stringify(result.error));
+            //     } else {
+            //       if (result.bestTranscription.formattedString.includes(' 전송')) {
+            //         let sttResult = result.bestTranscription.formattedString.slice(0, -2);
+            //         let debounceAction = _.debounce(() => { this.sttAction(sttResult); }, 500, {
+            //           leading: false, trailing: true
+            //         });
+            //         debounceAction();
+            //       }
+            //     }
+            //   }
+            // );
+
+            // SpeechToText.startRecognition('ko-KR');
             this.setState({
               sttCount: 0,
             });
-          }, recordStartTerm + 2500);
+          }, recordStartTerm + 1000);
+
         } else if (voicePrintTarget.type === 'join') {
-          let textTerm = voicePrintTarget.nickname.length * 500 + 500;
-          setTimeout(() => { Tts.speak(`${voicePrintTarget.nickname}'님이 들어오셨습니다.`); }, 500);
-          setTimeout(() => { SpeechToText.startRecognition('ko-KR'); }, textTerm + 2500);
+
+          let textTerm = voicePrintTarget.nickname.length * 100 + 500;
+          Tts.speak(`${voicePrintTarget.nickname}님이 입장하십니다.`);
+          setTimeout(() => {
+            //   SpeechToText.finishRecognition();
+            //   if (this.subscription != null) {
+            //     this.subscription.remove();
+            //     this.subscription = null;
+            //   }
+
+
+            voiceModeOn.play();
+
+
+            // STT Event Listener
+            // this.subscription = NativeAppEventEmitter.addListener(
+            //   'SpeechToText',
+            //   (result) => {
+            //     if (result.error) {
+            //       console.warn(JSON.stringify(result.error));
+            //     } else {
+            //       if (result.bestTranscription.formattedString.includes(' 전송')) {
+            //         let sttResult = result.bestTranscription.formattedString.slice(0, -2);
+            //         let debounceAction = _.debounce(() => { this.sttAction(sttResult); }, 500, {
+            //           leading: false, trailing: true
+            //         });
+            //         debounceAction();
+            //       }
+            //     }
+            //   }
+            // );
+            // SpeechToText.startRecognition('ko-KR');
+          }, textTerm + 2500);
         }
       }
       this.setState({
@@ -76,6 +149,37 @@ export default class App extends React.Component {
       });
     });
 
+
+  }
+
+
+  componentWillUnmount() {
+    if (this.subscription != null) {
+      console.warn('deleteSubscription')
+      this.subscription.remove();
+      this.subscription = null;
+    }
+  }
+
+  sttAction(sttResult) {
+    if (!this.state.sttCount) {
+      let sttCount = ++this.state.sttCount;
+      this.setState({
+        sttResults: sttResult,
+        sttCount: sttCount,
+      })
+      this.sendMyMsg(sttResult, 'stt');
+    }
+
+    SpeechToText.finishRecognition();
+    if (this.subscription != null) {
+      this.subscription.remove();
+      this.subscription = null;
+    }
+
+  }
+
+  onSpeak() {
     // STT Event Listener
     this.subscription = NativeAppEventEmitter.addListener(
       'SpeechToText',
@@ -93,18 +197,9 @@ export default class App extends React.Component {
         }
       }
     );
+    SpeechToText.startRecognition("ko-KR");
   }
 
-  sttAction(sttResult) {
-    if (!this.state.sttCount) {
-      let sttCount = ++this.state.sttCount;
-      this.setState({
-        sttResults: sttResult,
-        sttCount: sttCount,
-      })
-      this.sendMyMsg(sttResult, 'stt');
-    }
-  }
 
   pageStateChange(pageName) {
     this.setState({
@@ -118,9 +213,44 @@ export default class App extends React.Component {
       this.setState({
         voiceMode: true,
       })
-      SpeechToText.startRecognition("ko-KR");
+      // SpeechToText.finishRecognition();
+      // if (this.subscription != null) {
+      //   this.subscription.remove();
+      //   this.subscription = null;
+      // }
+
+
+      voiceModeOn.play();
+      setTimeout(() => { Tts.speak('보이스 모드가 작동되었습니다. 말을 시작하려면 음성모드 사용중 을 탭 하세요') }, 500);
+
+
+      // STT Event Listener
+      // this.subscription = NativeAppEventEmitter.addListener(
+      //   'SpeechToText',
+      //   (result) => {
+      //     if (result.error) {
+      //       console.warn(JSON.stringify(result.error));
+      //     } else {
+      //       if (result.bestTranscription.formattedString.includes(' 전송')) {
+      //         let sttResult = result.bestTranscription.formattedString.slice(0, -2);
+      //         let debounceAction = _.debounce(() => { this.sttAction(sttResult); }, 500, {
+      //           leading: false, trailing: true
+      //         });
+      //         debounceAction();
+      //       }
+      //     }
+      //   }
+      // );
+      // SpeechToText.startRecognition("ko-KR");
+
     } else {
-      SpeechToText.finishRecognition();
+
+
+
+
+      voiceModeOn.play();
+
+
       this.setState({
         sttResults: null,
         voiceMode: false,
@@ -231,6 +361,9 @@ export default class App extends React.Component {
             }}
             sendMyMsg={(text) => {
               this.sendMyMsg(text);
+            }}
+            onSpeak={() => {
+              this.onSpeak()
             }}
           />
         }

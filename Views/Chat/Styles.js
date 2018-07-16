@@ -159,6 +159,7 @@ const styles = StyleSheet.create({
     padding: 8,
     backgroundColor: '#fff',
     marginLeft: 8,
+    marginTop: 8,
     borderWidth: 1,
     borderRadius: 16,
     borderColor: '#ddd',
@@ -167,10 +168,9 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 0 },
     shadowOpacity: 0.3,
     shadowRadius: 2,
-    elevation: 2,
-    flexDirection: 'column',
-    alignItems: 'flex-end',
-    maxWidth: 180,
+    flexDirection: 'row',
+    alignSelf: 'flex-start',
+    maxWidth: 162,
   },
 
   myMsgBox: {
@@ -185,14 +185,18 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 0 },
     shadowOpacity: 0.3,
     shadowRadius: 2,
-    elevation: 2,
     flexDirection: 'column',
     alignItems: 'flex-end',
     maxWidth: 200,
   },
   leftMsgContainerMsgs: {
+    flexDirection: 'column',
+  },
+  leftmsgBoxNewWrap: {
+    flexDirection: 'row',
   },
   leftMsgContainerModeDates: {
+    flexDirection: 'row',
     alignSelf: 'flex-end',
     marginLeft: 4,
   },
@@ -220,6 +224,8 @@ const styles = StyleSheet.create({
     marginLeft: 4,
   },
   msgDateWrap: {
+    flexDirection: 'row',
+    alignSelf: 'flex-end',
   },
   msgDate: {
   },

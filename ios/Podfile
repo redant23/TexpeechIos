@@ -13,6 +13,8 @@ target 'TexpeechIos' do
     # Pods for testing
     pod 'TextToSpeech', :path => '../node_modules/react-native-tts'
 
+    pod 'RNSound', :path => '../node_modules/react-native-sound'
+
   end
 
   target 'TexpeechIosTests' do
