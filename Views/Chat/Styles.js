@@ -107,11 +107,21 @@ const styles = StyleSheet.create({
     flex: 1,
     marginBottom: 4,
   },
+  voiceBoxIcon: {
+    height: 53,
+    width: 32,
+  },
   chatVoiceBox: {
     height: 150,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#8A4FC6',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+  },
+  voiceBoxBg: {
+    height: 72,
   },
   voiceBoxText: {
     fontSize: 16,

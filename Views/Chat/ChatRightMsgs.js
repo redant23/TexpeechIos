@@ -20,7 +20,7 @@ export default class ChatRightMsgs extends React.Component {
           <View style={styles.myMsgContainer}>
 
             <View style={styles.myMsgBox}>
-              <Text style={styles.myMsgFont}>{this.props.msgDatas.message.text}
+              <Text selectable={true} style={styles.myMsgFont}>{this.props.msgDatas.message.text}
 
               </Text>
             </View>

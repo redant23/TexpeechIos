@@ -25,7 +25,7 @@ export default class ChatLeftMsgs extends React.Component {
             <Text style={styles.nicknameText}>{this.props.msgDatas.nickname}</Text>
             <View style={styles.leftmsgBoxNewWrap}>
               <View style={styles.msgBox}>
-                <Text style={styles.msgFont}>{this.props.msgDatas.message.text}
+                <Text selectable={true} style={styles.msgFont}>{this.props.msgDatas.message.text}
                 </Text>
               </View>
               <View style={styles.leftMsgContainerModeDates}>
