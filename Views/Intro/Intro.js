@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, TouchableOpacity, Button, StyleSheet, Text, View } from 'react-native';
+import { Image, TouchableHighlight, Button, StyleSheet, Text, View } from 'react-native';
 
 
 export default class Intro extends React.Component {
@@ -11,21 +11,28 @@ export default class Intro extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image style={styles.img} source={require('../../Sources/Images/voice-toggle.png')} />
-        <Text style={styles.body}>대화 중 음성모드를 사용하면</Text>
-        <Text style={styles.body}>화면을 보지 않고도</Text>
-        <Text style={styles.body}>상대방의 메시지를 듣고</Text>
-        <Text style={styles.body}>상대방에게 음성으로</Text>
-        <Text style={styles.body}>메시지를 보낼 수 있습니다.</Text>
-        <View style={{ backgroundColor: '#fff', padding: 50, height: 30 }} />
-        <TouchableOpacity
-          onPress={this.props.pageStateChange.bind(this, 'Chat')}
-          accessibilityLabel="Get Started button"
-        >
-          <Text style={styles.btnTest}>
-            시작하기
+        <View style={styles.imgWrap}>
+          <Image style={styles.img} source={require('../../Sources/Images/voice-toggle.png')} />
+        </View>
+        <View style={styles.textWrap}>
+          <Text style={styles.textBody}>대화 중 음성모드를 사용하면</Text>
+          <Text style={styles.textBody}>화면을 보지 않고도</Text>
+          <Text style={styles.textBody}>상대방의 메시지를 듣고</Text>
+          <Text style={styles.textBody}>상대방에게 음성으로</Text>
+          <Text style={styles.textBody}>메시지를 보낼 수 있습니다.</Text>
+        </View>
+        <View style={styles.btnWrap}>
+          <TouchableHighlight
+            underlayColor={'#7A47C2'}
+            onPress={this.props.pageStateChange.bind(this, 'Chat')}
+            style={styles.startButton}
+            accessibilityLabel="Get Started button"
+          >
+            <Text style={styles.btnText}>
+              시작하기
         </Text>
-        </TouchableOpacity>
+          </TouchableHighlight>
+        </View>
       </View>
     );
   }
@@ -38,26 +45,47 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 20,
+
   },
-  body: {
-    fontWeight: 'bold',
-    fontSize: 24,
-    lineHeight: 36,
+  imgWrap: {
+    flex: 5,
+
+    justifyContent: 'flex-end',
   },
-  btnTest: {
-    borderWidth: 1,
+  textBody: {
+    fontSize: 20,
+    lineHeight: 30,
+    color: '#5A5A5A',
+    textAlign: 'center',
+  },
+  textWrap: {
+    flex: 4,
+
+    justifyContent: 'center',
+  },
+  btnWrap: {
+    flex: 4,
+
+    justifyContent: 'center',
+  },
+  btnText: {
+    fontSize: 16,
+    color: '#fff',
+  },
+  startButton: {
+    alignSelf: 'flex-end',
+    alignItems: 'flex-end',
+    borderRadius: 4,
+    // borderColor: 'black',
     paddingLeft: 25,
     paddingRight: 25,
     paddingTop: 15,
     paddingBottom: 15,
-    fontSize: 16,
-    color: '#fff',
-    borderColor: 'black',
     borderRadius: 4,
-    backgroundColor: '#424242',
+    backgroundColor: '#C86DD7',
   },
   img: {
-    marginBottom: 20,
-    marginTop: 80,
+    width: 198,
+    height: 63,
   },
 });

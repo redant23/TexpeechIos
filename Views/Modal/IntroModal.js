@@ -25,20 +25,24 @@ export default class IntroModal extends React.Component {
             justifyContent: 'center',
           }}>
             <Text style={{
-              fontSize: 32,
+              fontSize: 24,
+              color: '#5a5a5a',
               fontWeight: 'bold',
-              marginBottom: 24,
-            }}>닉네임 입력</Text>
+              marginBottom: 16,
+              textAlign: 'center',
+            }}>대화명을 입력하세요</Text>
             <TextInput
               style={{
                 width: 200,
-                height: 32,
+                height: 40,
                 padding: 0,
                 paddingLeft: 8,
                 backgroundColor: '#fff',
                 borderWidth: 1,
-                borderColor: '#9d9d9d',
+                borderColor: '#979797',
                 borderRadius: 4,
+                alignItems: 'center',
+                justifyContent: 'center',
               }}
               value={this.props.text}
               onChangeText={(text) => {
@@ -49,14 +53,13 @@ export default class IntroModal extends React.Component {
             {
               this.props.username &&
               <TouchableHighlight
+                underlayColor={'#7A47C2'}
                 style={{
                   marginTop: 16,
                   width: 200,
-                  height: 32,
+                  height: 40,
                   padding: 8,
                   backgroundColor: '#C86DD7',
-                  borderWidth: 1,
-                  borderColor: '#9d9d9d',
                   borderRadius: 4,
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -73,7 +76,7 @@ export default class IntroModal extends React.Component {
             }
           </View>
         </View>
-      </Modal>
+      </Modal >
     );
   }
 };

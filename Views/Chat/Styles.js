@@ -6,22 +6,29 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  headerBarBoxWrap: {
+  headerBarContainer: {
+    height: 75,
+    backgroundColor: '#f1f1f1',
+  },
+  headerBarBox: {
     paddingBottom: 8,
     paddingLeft: 16,
     paddingRight: 16,
     paddingTop: 24,
+    marginBottom: 30,
     height: 72,
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#fff',
-    borderColor: '#ddd',
-    borderTopWidth: 1,
-    shadowColor: '#000',
-    shadowOffset: { width: 2, height: 2 },
-    shadowOpacity: 0.8,
+  },
+  withShadow: {
+    shadowColor: "#000",
+    shadowOpacity: 0.3,
     shadowRadius: 2,
-    elevation: 2,
+    shadowOffset: {
+      height: 0,
+      width: 0
+    },
   },
   headerBarLeftWrap: {
     flex: 1,
@@ -29,18 +36,24 @@ const styles = StyleSheet.create({
   headerBarCenterWrap: {
     flex: 1,
     alignItems: 'center',
+
   },
   headerBarRightWrap: {
     flex: 1,
     alignItems: 'flex-end',
+
   },
   headerBarIcon: {
-
+    width: 11,
+    height: 18,
   },
   headerBarText: {
     alignItems: 'center',
     justifyContent: 'center',
-    fontSize: 18,
+    fontSize: 16,
+    backgroundColor: 'transparent',
+    color: '#424242',
+    fontWeight: 'normal',
   },
   scrollContainer: {
     backgroundColor: '#f1f1f1',
@@ -48,17 +61,24 @@ const styles = StyleSheet.create({
   voiceModeToggleBox: {
     position: 'absolute',
     right: 20,
-    top: 94,
+    top: 104,
     width: 140,
-    height: 36,
+    height: 50,
     backgroundColor: '#fff',
     opacity: 0.8,
     flexDirection: 'row',
     alignItems: 'center',
+    borderRadius: 4,
+    justifyContent: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.3,
+    shadowRadius: 2,
   },
   toggleBoxText: {
     marginLeft: 8,
     marginRight: 8,
+    color: '#50555C',
   },
   toggleMicIcon: {
     width: 13,
@@ -76,7 +96,8 @@ const styles = StyleSheet.create({
   },
   noticeDateFont: {
     marginTop: 0,
-    fontSize: 14,
+    fontSize: 12,
+    color: '#AAA',
   },
   yourMsgsWrap: {
     flex: 1,
@@ -110,15 +131,14 @@ const styles = StyleSheet.create({
     paddingBottom: 8,
     height: 40,
     backgroundColor: '#fff',
-    borderColor: '#ddd',
-    borderTopWidth: 1,
     shadowColor: '#000',
-    shadowOffset: { width: 2, height: 2 },
-    shadowOpacity: 0.8,
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.3,
     shadowRadius: 2,
-    elevation: 2,
   },
   chatInputSendIcon: {
+    width: 29,
+    height: 29,
     marginRight: 8,
   },
   chatInputBox: {
@@ -132,6 +152,7 @@ const styles = StyleSheet.create({
     paddingLeft: 8,
     marginLeft: 8,
     marginRight: 8,
+    marginBottom: 8,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -228,12 +249,16 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
   },
   msgDate: {
+    color: '#AAA',
+    fontSize: 12,
   },
   yourMsgMicIconWrap: {
 
   },
   yourMsgDate: {
     marginLeft: 4,
+    color: '#AAA',
+    fontSize: 12,
   },
   yourMsg: {
     marginTop: 16,

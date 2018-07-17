@@ -7,15 +7,19 @@ export default class ChatHeaderBar extends React.Component {
   render() {
 
     return (
-      <View style={styles.headerBarBoxWrap}>
-        <View style={styles.headerBarLeftWrap}>
-          <Image style={styles.headerBarIcon} source={require('../../Sources/Images/icon-back.png')} />
-        </View>
-        <View style={styles.headerBarCenterWrap}>
-          <Text style={styles.headerBarText}>Chat</Text>
-        </View>
-        <View style={styles.headerBarRightWrap}>
-          <Text style={styles.headerBarText}>Setting</Text>
+      <View>
+        <View style={styles.headerBarContainer}>
+          <View style={[styles.headerBarBox, styles.withShadow]}>
+            <View style={styles.headerBarLeftWrap}>
+              <Image style={styles.headerBarIcon} source={require('../../Sources/Images/icon-back.png')} />
+            </View>
+            <View style={styles.headerBarCenterWrap}>
+              <Text style={styles.headerBarText}>Chat</Text>
+            </View>
+            <View style={styles.headerBarRightWrap}>
+              <Text style={styles.headerBarText}>Setting</Text>
+            </View>
+          </View>
         </View>
       </View>
     );
