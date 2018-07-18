@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, TouchableOpacity, Button, Text, View } from 'react-native';
+import { ScrollView, StatusBar, TouchableOpacity, Button, Text, View } from 'react-native';
 import styles from './ChatStyles/ChatStyles.js';
 import ChatNotice from './ChatNotice.js';
 import ChatLeftMsgs from './ChatLeftMsgs.js';
@@ -28,6 +28,7 @@ export default class Chat extends React.Component {
     }
     return (
       <View style={styles.container}>
+        <StatusBar barStyle="dark-content" />
         <ChatHeaderBar />
         <ScrollView
           style={styles.scrollContainer}

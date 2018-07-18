@@ -23,6 +23,7 @@
 {
   [FIRApp configure];
   //add
+  
   [[UNUserNotificationCenter currentNotificationCenter] setDelegate:self];
   NSURL *jsCodeLocation;
   

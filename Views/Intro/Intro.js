@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, TouchableHighlight, Button, StyleSheet, Text, View } from 'react-native';
+import { Image, StatusBar, TouchableHighlight, Button, StyleSheet, Text, View } from 'react-native';
 
 
 export default class Intro extends React.Component {
@@ -11,6 +11,7 @@ export default class Intro extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+        <StatusBar barStyle="dark-content" />
         <View style={styles.imgWrap}>
           <Image style={styles.img} source={require('../../Sources/Images/voice-toggle.png')} />
         </View>
