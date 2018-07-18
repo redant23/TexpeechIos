@@ -13,6 +13,8 @@
 
 //add
 #import "RNFirebaseMessaging.h"
+
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 //
 
 @import Firebase;
@@ -23,6 +25,11 @@
 {
   [FIRApp configure];
   //add
+  
+  // add(fb login)
+  [[FBSDKApplicationDelegate sharedInstance] application:application
+                           didFinishLaunchingWithOptions:launchOptions];
+  //
   
   [[UNUserNotificationCenter currentNotificationCenter] setDelegate:self];
   NSURL *jsCodeLocation;
@@ -43,6 +50,25 @@
   return YES;
 }
 
+// add(fb login)
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+            options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+  
+  BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application
+                                                                openURL:url
+                                                      sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
+                                                             annotation:options[UIApplicationOpenURLOptionsAnnotationKey]
+                  ];
+  // Add any custom logic here.
+  return handled;
+}
+//
+
+//app Event https://developers.facebook.com/docs/ios/getting-started/
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+  [FBSDKAppEvents activateApp];
+}
 
 
 @end

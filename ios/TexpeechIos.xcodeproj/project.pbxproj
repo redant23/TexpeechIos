@@ -35,12 +35,29 @@
 		2D02E4C71E0B4AEC006451C7 /* libRCTText-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3E941DF850E9000B6D8A /* libRCTText-tvOS.a */; };
 		2D02E4C81E0B4AEC006451C7 /* libRCTWebSocket-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3E991DF850E9000B6D8A /* libRCTWebSocket-tvOS.a */; };
 		2D16E6881FA4F8E400B85C8A /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D16E6891FA4F8E400B85C8A /* libReact.a */; };
+		2D732EDC569749C99636954C /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2979CE16C77E4D98AE84F115 /* libRCTFBSDK.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* TexpeechIosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* TexpeechIosTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		6B1157E920FEE75700C1A87E /* mode-end.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6B1157BD20FEE75700C1A87E /* mode-end.wav */; };
 		6B1157EA20FEE75700C1A87E /* rec-on.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6B1157E720FEE75700C1A87E /* rec-on.wav */; };
 		6B1157EB20FEE75700C1A87E /* mode-start.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6B1157E820FEE75700C1A87E /* mode-start.wav */; };
 		6B1157ED20FEE88D00C1A87E /* send-success.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6B1157EC20FEE88D00C1A87E /* send-success.wav */; };
+		6B72DF1320FFAB39000E69A6 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B72DF0F20FFAB24000E69A6 /* FBSDKShareKit.framework */; };
+		6B72DF1420FFAB39000E69A6 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B72DF0F20FFAB24000E69A6 /* FBSDKShareKit.framework */; };
+		6B72DF1520FFAB39000E69A6 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B72DF0F20FFAB24000E69A6 /* FBSDKShareKit.framework */; };
+		6B72DF1620FFAB39000E69A6 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B72DF0F20FFAB24000E69A6 /* FBSDKShareKit.framework */; };
+		6B72DF1720FFAB39000E69A6 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B72DF1020FFAB2A000E69A6 /* FBSDKLoginKit.framework */; };
+		6B72DF1820FFAB39000E69A6 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B72DF1020FFAB2A000E69A6 /* FBSDKLoginKit.framework */; };
+		6B72DF1920FFAB39000E69A6 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B72DF1020FFAB2A000E69A6 /* FBSDKLoginKit.framework */; };
+		6B72DF1A20FFAB39000E69A6 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B72DF1020FFAB2A000E69A6 /* FBSDKLoginKit.framework */; };
+		6B72DF1B20FFAB39000E69A6 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B72DF1120FFAB30000E69A6 /* Bolts.framework */; };
+		6B72DF1C20FFAB39000E69A6 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B72DF1120FFAB30000E69A6 /* Bolts.framework */; };
+		6B72DF1D20FFAB39000E69A6 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B72DF1120FFAB30000E69A6 /* Bolts.framework */; };
+		6B72DF1E20FFAB39000E69A6 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B72DF1120FFAB30000E69A6 /* Bolts.framework */; };
+		6B72DF1F20FFAB39000E69A6 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B72DF1220FFAB39000E69A6 /* FBSDKCoreKit.framework */; };
+		6B72DF2020FFAB39000E69A6 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B72DF1220FFAB39000E69A6 /* FBSDKCoreKit.framework */; };
+		6B72DF2120FFAB39000E69A6 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B72DF1220FFAB39000E69A6 /* FBSDKCoreKit.framework */; };
+		6B72DF2220FFAB39000E69A6 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B72DF1220FFAB39000E69A6 /* FBSDKCoreKit.framework */; };
 		6BB7683720F9BCC600BC0EF2 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		6BB7683920F9D9A200BC0EF2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BB7683820F9D9A100BC0EF2 /* GoogleService-Info.plist */; };
 		6BC7641A20FA508E0000DF61 /* libTextToSpeech.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BC7641920FA4FDE0000DF61 /* libTextToSpeech.a */; };
@@ -306,6 +323,13 @@
 			remoteGlobalIDString = 2D2A28201D9B03D100D4039D;
 			remoteInfo = "RCTAnimation-tvOS";
 		};
+		6B0152EC20FF58AB00269BC1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2BC2858CD9524551B8BF014E /* RCTFBSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9350E0F11CE3B0920041D815;
+			remoteInfo = RCTFBSDK;
+		};
 		6BB768D720F9EF6700BC0EF2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 17EE56792B8840FEA9874EC8 /* RNFirebase.xcodeproj */;
@@ -380,6 +404,8 @@
 		141DB2708996503957A0BCF6 /* libPods-TexpeechIos-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TexpeechIos-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		17EE56792B8840FEA9874EC8 /* RNFirebase.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNFirebase.xcodeproj; path = "../node_modules/react-native-firebase/ios/RNFirebase.xcodeproj"; sourceTree = "<group>"; };
+		2979CE16C77E4D98AE84F115 /* libRCTFBSDK.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTFBSDK.a; sourceTree = "<group>"; };
+		2BC2858CD9524551B8BF014E /* RCTFBSDK.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTFBSDK.xcodeproj; path = "../node_modules/react-native-fbsdk/ios/RCTFBSDK.xcodeproj"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* TexpeechIos-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TexpeechIos-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* TexpeechIos-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TexpeechIos-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -389,6 +415,10 @@
 		6B1157E720FEE75700C1A87E /* rec-on.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "rec-on.wav"; path = "../Sources/Audios/rec-on.wav"; sourceTree = "<group>"; };
 		6B1157E820FEE75700C1A87E /* mode-start.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "mode-start.wav"; path = "../Sources/Audios/mode-start.wav"; sourceTree = "<group>"; };
 		6B1157EC20FEE88D00C1A87E /* send-success.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = "send-success.wav"; path = "../Sources/Audios/send-success.wav"; sourceTree = "<group>"; };
+		6B72DF0F20FFAB24000E69A6 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		6B72DF1020FFAB2A000E69A6 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		6B72DF1120FFAB30000E69A6 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		6B72DF1220FFAB39000E69A6 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		6BB7683820F9D9A100BC0EF2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6BC763ED20FA4FDD0000DF61 /* TextToSpeech.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TextToSpeech.xcodeproj; path = "../../react-native-tts/ios/TextToSpeech.xcodeproj"; sourceTree = "<group>"; };
 		6BDA7AA720FC767100B4234C /* RNSound.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNSound.xcodeproj; path = "../../react-native-sound/RNSound.xcodeproj"; sourceTree = "<group>"; };
@@ -412,8 +442,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B72DF1C20FFAB39000E69A6 /* Bolts.framework in Frameworks */,
+				6B72DF2020FFAB39000E69A6 /* FBSDKCoreKit.framework in Frameworks */,
 				140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */,
 				1299A7E918F8968FD4C133A7 /* libPods-TexpeechIosTests.a in Frameworks */,
+				6B72DF1820FFAB39000E69A6 /* FBSDKLoginKit.framework in Frameworks */,
+				6B72DF1420FFAB39000E69A6 /* FBSDKShareKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,10 +455,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D732EDC569749C99636954C /* libRCTFBSDK.a in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
+				6B72DF1720FFAB39000E69A6 /* FBSDKLoginKit.framework in Frameworks */,
+				6B72DF1F20FFAB39000E69A6 /* FBSDKCoreKit.framework in Frameworks */,
 				6BB7683720F9BCC600BC0EF2 /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
+				6B72DF1B20FFAB39000E69A6 /* Bolts.framework in Frameworks */,
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
 				00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */,
 				133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */,
@@ -432,6 +470,7 @@
 				139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */,
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
+				6B72DF1320FFAB39000E69A6 /* FBSDKShareKit.framework in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				6BC7641A20FA508E0000DF61 /* libTextToSpeech.a in Frameworks */,
 				6BDA7AD520FC768700B4234C /* libRNSound.a in Frameworks */,
@@ -446,11 +485,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D16E6881FA4F8E400B85C8A /* libReact.a in Frameworks */,
+				6B72DF2120FFAB39000E69A6 /* FBSDKCoreKit.framework in Frameworks */,
 				2D02E4C21E0B4AEC006451C7 /* libRCTAnimation.a in Frameworks */,
+				6B72DF1920FFAB39000E69A6 /* FBSDKLoginKit.framework in Frameworks */,
 				2D02E4C31E0B4AEC006451C7 /* libRCTImage-tvOS.a in Frameworks */,
 				2D02E4C41E0B4AEC006451C7 /* libRCTLinking-tvOS.a in Frameworks */,
 				2D02E4C51E0B4AEC006451C7 /* libRCTNetwork-tvOS.a in Frameworks */,
+				6B72DF1520FFAB39000E69A6 /* FBSDKShareKit.framework in Frameworks */,
 				2D02E4C61E0B4AEC006451C7 /* libRCTSettings-tvOS.a in Frameworks */,
+				6B72DF1D20FFAB39000E69A6 /* Bolts.framework in Frameworks */,
 				2D02E4C71E0B4AEC006451C7 /* libRCTText-tvOS.a in Frameworks */,
 				2D02E4C81E0B4AEC006451C7 /* libRCTWebSocket-tvOS.a in Frameworks */,
 			);
@@ -460,8 +503,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B72DF1E20FFAB39000E69A6 /* Bolts.framework in Frameworks */,
+				6B72DF2220FFAB39000E69A6 /* FBSDKCoreKit.framework in Frameworks */,
 				2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */,
 				24C8FC19AF9E96A53170294F /* libPods-TexpeechIos-tvOSTests.a in Frameworks */,
+				6B72DF1A20FFAB39000E69A6 /* FBSDKLoginKit.framework in Frameworks */,
+				6B72DF1620FFAB39000E69A6 /* FBSDKShareKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,8 +648,12 @@
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2D16E6891FA4F8E400B85C8A /* libReact.a */,
+				6B72DF1120FFAB30000E69A6 /* Bolts.framework */,
+				6B72DF1220FFAB39000E69A6 /* FBSDKCoreKit.framework */,
+				6B72DF1020FFAB2A000E69A6 /* FBSDKLoginKit.framework */,
+				6B72DF0F20FFAB24000E69A6 /* FBSDKShareKit.framework */,
 				0143CE671FDE015E2B42FF91 /* libPods-TexpeechIos.a */,
+				2D16E6891FA4F8E400B85C8A /* libReact.a */,
 				141DB2708996503957A0BCF6 /* libPods-TexpeechIos-tvOSTests.a */,
 				DEAB47E6892E983796ECB2C5 /* libPods-TexpeechIosTests.a */,
 			);
@@ -618,11 +669,20 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		6B0152E920FF58AB00269BC1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6B0152ED20FF58AB00269BC1 /* libRCTFBSDK.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		6BB7685220F9E1A900BC0EF2 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
 				AF0C1D75FE4144BA8B699936 /* libRNFirebase.a */,
 				95BC06C6CAF54B88A88DA1B1 /* libRNSpeechToTextIos.a */,
+				2979CE16C77E4D98AE84F115 /* libRCTFBSDK.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -687,6 +747,7 @@
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				17EE56792B8840FEA9874EC8 /* RNFirebase.xcodeproj */,
 				B72DB5EBB32142AAA7406FA7 /* RNSpeechToTextIos.xcodeproj */,
+				2BC2858CD9524551B8BF014E /* RCTFBSDK.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -877,6 +938,10 @@
 				{
 					ProductGroup = ADBDB9201DFEBF0600ED6528 /* Products */;
 					ProjectRef = ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */;
+				},
+				{
+					ProductGroup = 6B0152E920FF58AB00269BC1 /* Products */;
+					ProjectRef = 2BC2858CD9524551B8BF014E /* RCTFBSDK.xcodeproj */;
 				},
 				{
 					ProductGroup = 00C302B61ABCB90400DB3ED1 /* Products */;
@@ -1180,6 +1245,13 @@
 			remoteRef = 5E9157341DD0AC6500FF2AA8 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		6B0152ED20FF58AB00269BC1 /* libRCTFBSDK.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTFBSDK.a;
+			remoteRef = 6B0152EC20FF58AB00269BC1 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		6BB768D820F9EF6700BC0EF2 /* libRNFirebase.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1425,6 +1497,10 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = XK396U7BFG;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1433,12 +1509,14 @@
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 					"$(SRCROOT)/../node_modules/react-native-speech-to-text-ios/ios",
+					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 				);
 				INFOPLIST_FILE = TexpeechIosTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
@@ -1459,16 +1537,22 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = XK396U7BFG;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 					"$(SRCROOT)/../node_modules/react-native-speech-to-text-ios/ios",
+					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 				);
 				INFOPLIST_FILE = TexpeechIosTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
@@ -1491,11 +1575,15 @@
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = XK396U7BFG;
 				ENABLE_BITCODE = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)/**";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)/**",
+					"$(PROJECT_DIR)",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 					"$(SRCROOT)/../node_modules/react-native-speech-to-text-ios/ios",
+					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 				);
 				INFOPLIST_FILE = TexpeechIos/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1528,11 +1616,15 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = XK396U7BFG;
 				ENABLE_BITCODE = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)/**";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)/**",
+					"$(PROJECT_DIR)",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 					"$(SRCROOT)/../node_modules/react-native-speech-to-text-ios/ios",
+					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 				);
 				INFOPLIST_FILE = TexpeechIos/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1569,16 +1661,22 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = XK396U7BFG;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 					"$(SRCROOT)/../node_modules/react-native-speech-to-text-ios/ios",
+					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 				);
 				INFOPLIST_FILE = "TexpeechIos-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
@@ -1606,16 +1704,22 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = XK396U7BFG;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 					"$(SRCROOT)/../node_modules/react-native-speech-to-text-ios/ios",
+					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 				);
 				INFOPLIST_FILE = "TexpeechIos-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
@@ -1643,16 +1747,22 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = XK396U7BFG;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 					"$(SRCROOT)/../node_modules/react-native-speech-to-text-ios/ios",
+					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 				);
 				INFOPLIST_FILE = "TexpeechIos-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
@@ -1680,16 +1790,22 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = XK396U7BFG;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 					"$(SRCROOT)/../node_modules/react-native-speech-to-text-ios/ios",
+					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 				);
 				INFOPLIST_FILE = "TexpeechIos-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);

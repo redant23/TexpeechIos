@@ -3,6 +3,7 @@ package com.texpeechios;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import com.zmxv.RNSound.RNSoundPackage;
 import net.no_mad.tts.TextToSpeechPackage;
 import io.invertase.firebase.RNFirebasePackage;
@@ -26,6 +27,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new FBSDKPackage(),
             new RNSoundPackage(),
             new TextToSpeechPackage(),
             new RNFirebasePackage()
