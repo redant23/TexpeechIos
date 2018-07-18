@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Image, Text, View } from 'react-native';
-import styles from './Styles.js';
+import styles from './ChatStyles/ChatVoiceToggleBoxStyles';
 
 export default class ChatVoiceToggleBox extends React.Component {
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image, Text, View } from 'react-native';
-import styles from './Styles.js';
+import styles from './ChatStyles/ChatLeftMsgsStyles.js';
 
 export default class ChatLeftMsgs extends React.Component {
 
@@ -23,7 +23,7 @@ export default class ChatLeftMsgs extends React.Component {
           </View>
           <View style={styles.leftMsgContainerMsgs}>
             <Text style={styles.nicknameText}>{this.props.msgDatas.nickname}</Text>
-            <View style={styles.leftmsgBoxNewWrap}>
+            <View style={styles.leftMsgBoxNewWrap}>
               <View style={styles.msgBox}>
                 <Text selectable={true} style={styles.msgFont}>{this.props.msgDatas.message.text}
                 </Text>

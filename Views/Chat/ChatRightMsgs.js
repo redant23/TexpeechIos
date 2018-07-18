@@ -1,6 +1,6 @@
 import React from 'react';
 import { Image, Text, View } from 'react-native';
-import styles from './Styles.js';
+import styles from './ChatStyles/ChatRightMsgsStyles';
 
 export default class ChatRightMsgs extends React.Component {
 

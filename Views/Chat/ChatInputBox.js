@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, TextInput, View, Image, TouchableHighlight, KeyboardAvoidingView } from 'react-native';
-import styles from './Styles.js';
+import styles from './ChatStyles/ChatInputBoxStyles';
 
 export default class ChatInputBox extends React.Component {
   constructor(props) {

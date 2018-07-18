@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, TextInput, ImageBackground, View, Image, TouchableOpacity, KeyboardAvoidingView } from 'react-native';
-import styles from './Styles.js';
+import styles from './ChatStyles/ChatVoiceBoxStyles.js';
 
 export default class ChatVoiceBox extends React.Component {
 

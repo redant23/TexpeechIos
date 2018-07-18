@@ -1,6 +1,6 @@
 import React from 'react';
 import { ScrollView, TouchableOpacity, Button, Text, View } from 'react-native';
-import styles from './Styles.js';
+import styles from './ChatStyles/ChatStyles.js';
 import ChatNotice from './ChatNotice.js';
 import ChatLeftMsgs from './ChatLeftMsgs.js';
 import ChatRightMsgs from './ChatRightMsgs.js';
@@ -16,7 +16,7 @@ export default class Chat extends React.Component {
   }
 
   componentDidUpdate() {
-    this.scrollToEnd()
+    this.scrollToEnd();
   }
 
   render() {
@@ -46,25 +46,11 @@ export default class Chat extends React.Component {
               }
             })
           }
-          {/* {
-
-          }
-          <ChatNotice
-            username={'불개미'}
-          />
-          <ChatLeftMsgs
-            msgDatas={this.props.msgDatas}
-          />
-          <ChatRightMsgs
-            msgDatas={this.props.msgDatas}
-          />
-          {renderData} */}
-
         </ScrollView >
         <ChatVoiceToggleBox
           toggleValue={this.props.toggleValue}
           toggleValueChange={(val) => {
-            this.props.toggleValueChange(val)
+            this.props.toggleValueChange(val);
           }}
         />
         {

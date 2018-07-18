@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import styles from './Styles.js';
+import styles from './ChatStyles/ChatNoticeStyles';
 
 export default class ChatNotice extends React.Component {
 
