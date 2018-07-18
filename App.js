@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, NativeAppEventEmitter, NativeModules, NativeEventEmitter } from 'react-native';
+// import facebookLogin from './Views/User/Login.js';
 import Intro from './Views/Intro/Intro.js';
 import Chat from './Views/Chat/Chat.js';
 import IntroModal from './Views/Modal/IntroModal.js';
@@ -273,7 +274,11 @@ export default class App extends React.Component {
     return (
       <View style={appStyles.container}>
         {
-          this.state.pageState === 'Chat' &&
+          // !this.state.login &&
+          // <facebookLogin />
+        }
+        {
+          this.state.pageState === 'Chat' && // this.state.login &&
           <IntroModal
             modalVisible={this.state.modalVisible}
             text={this.state.text}
@@ -287,7 +292,7 @@ export default class App extends React.Component {
           />
         }
         {
-          this.state.pageState === 'intro' &&
+          this.state.pageState === 'intro' &&  // this.state.login &&
           <Intro
             pageStateChange={(pageName) => {
               this.pageStateChange(pageName);
@@ -295,7 +300,7 @@ export default class App extends React.Component {
           />
         }
         {
-          this.state.pageState === 'Chat' &&
+          this.state.pageState === 'Chat' && // this.state.login &&
           <Chat
             currentDatas={this.state.currentDatas}
             myMsgs={this.state.myMsgs}
