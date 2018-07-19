@@ -5,6 +5,7 @@ import Intro from './Views/Intro/Intro.js';
 import Chat from './Views/Chat/Chat.js';
 import IntroModal from './Views/Modal/IntroModal.js';
 import PropTypes from 'prop-types';
+import Login from './Views/User/Login.js';
 
 import firebase from './Settings/Firebase.js';
 
@@ -46,7 +47,7 @@ export default class App extends React.Component {
       eventNumber: 0,//firebase에서 시작할 때 불러오자.
       currentDatas: null,
       modalVisible: true,
-      pageState: 'intro',
+      pageState: 'Login',
       toggleValue: false,
       myMsgs: null,
       sttResults: null,
@@ -274,8 +275,8 @@ export default class App extends React.Component {
     return (
       <View style={appStyles.container}>
         {
-          // !this.state.login &&
-          // <facebookLogin />
+          this.state.pageState === 'Login' &&
+          <Login />
         }
         {
           this.state.pageState === 'Chat' && // this.state.login &&
