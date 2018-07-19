@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 const ChatHeaderbarStyles = StyleSheet.create({
   headerBarContainer: {
-    height: 75,
+    height: 67,
     backgroundColor: '#f1f1f1',
   },
   headerBarBox: {
@@ -11,7 +11,7 @@ const ChatHeaderbarStyles = StyleSheet.create({
     paddingRight: 16,
     paddingTop: 24,
     marginBottom: 30,
-    height: 72,
+    height: 64,
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#fff',
@@ -39,6 +39,14 @@ const ChatHeaderbarStyles = StyleSheet.create({
   headerBarIcon: {
     width: 11,
     height: 18,
+  },
+  headerBarTitle: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: 18,
+    backgroundColor: 'transparent',
+    color: '#424242',
+    fontWeight: 'bold',
   },
   headerBarText: {
     alignItems: 'center',

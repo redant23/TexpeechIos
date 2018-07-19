@@ -6,6 +6,7 @@ import Chat from './Views/Chat/Chat.js';
 import IntroModal from './Views/Modal/IntroModal.js';
 import PropTypes from 'prop-types';
 import Login from './Views/User/Login.js';
+import ListCom from './Views/List/ListCom.js';
 
 import firebase from './Settings/Firebase.js';
 
@@ -134,6 +135,14 @@ export default class App extends React.Component {
     if (this.subscription != null) {
       this.subscription.remove();
       this.subscription = null;
+    }
+  }
+
+  logChange(err) {
+    if (!err) {
+      this.setState({
+        pageState: 'List'
+      })
     }
   }
 
@@ -276,7 +285,15 @@ export default class App extends React.Component {
       <View style={appStyles.container}>
         {
           this.state.pageState === 'Login' &&
-          <Login />
+          <Login
+            logChange={(err) => {
+              this.logChange(err);
+            }}
+          />
+        }
+        {
+          this.state.pageState === 'List' &&
+          <ListCom />
         }
         {
           this.state.pageState === 'Chat' && // this.state.login &&

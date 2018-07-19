@@ -1,8 +1,41 @@
 import React, { Component } from 'react';
-import { View, StatusBar, ImageBackground, TextInput, Text, TouchableHighlight, Image, StyleSheet } from 'react-native';
+import { View, AlertIOS, StatusBar, ImageBackground, TextInput, Text, TouchableHighlight, Image, StyleSheet } from 'react-native';
 
 
 export default class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      emailValue: null,
+      pwValue: null,
+    }
+  }
+
+  inputEmail(value) {
+    this.setState({
+      emailValue: value,
+    })
+
+  }
+
+  inputPw(value) {
+    this.setState({
+      pwValue: value,
+    })
+    // AlertIOS.alert(this.state.emailValue)
+  }
+
+  loginCheck() {
+    if (this.state.emailValue === 'admin' && this.state.pwValue === 'dj1234') {
+      this.props.logChange();
+    } else {
+      AlertIOS.alert(
+        this.props.emailValue // + this.props.pwValue + '아이디와 비밀번호가 일치하지 않습니다.'
+      );
+      this.props.logChange('err');
+    }
+  }
+
   render() {
     return (
       <ImageBackground source={require('../../Sources/Images/login-bg.png')} style={LoginStyles.container}>
@@ -13,17 +46,17 @@ export default class Login extends Component {
         <View style={LoginStyles.loginPasswordSection}>
           <Text style={LoginStyles.lpText}>이메일</Text>
           <View style={LoginStyles.inputBoxwrap}>
-            <TextInput autoCapitalize={'none'} keyboardType={'email-address'} placeholder={'email@example.com'} style={LoginStyles.inputBox}></TextInput>
+            <TextInput onChangeText={(value) => { this.inputEmail(value) }} autoCapitalize={'none'} keyboardType={'email-address'} placeholder={'email@example.com'} style={LoginStyles.inputBox}></TextInput>
           </View>
         </View>
         <View style={LoginStyles.loginPasswordSection}>
           <Text style={LoginStyles.lpText} >비밀번호</Text>
           <View style={LoginStyles.inputBoxwrap}>
-            <TextInput placeholder={'6자 이상'} secureTextEntry={true} style={LoginStyles.inputBox}></TextInput>
+            <TextInput onChangeText={(value) => { this.inputPw(value) }} placeholder={'6자 이상'} secureTextEntry={true} style={LoginStyles.inputBox}></TextInput>
           </View>
         </View>
         <View style={LoginStyles.btnSection}>
-          <TouchableHighlight style={LoginStyles.loginBtn}>
+          <TouchableHighlight onPress={() => { this.loginCheck() }} style={LoginStyles.loginBtn}>
             <Text>로그인</Text>
           </TouchableHighlight>
         </View>

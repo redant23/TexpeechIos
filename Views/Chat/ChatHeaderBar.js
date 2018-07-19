@@ -5,7 +5,7 @@ import styles from './ChatStyles/ChatHeaderbarStyles.js';
 export default class ChatHeaderBar extends React.Component {
 
   render() {
-
+    var rightText = '';
     return (
       <View>
         <View style={styles.headerBarContainer}>
@@ -14,10 +14,10 @@ export default class ChatHeaderBar extends React.Component {
               <Image style={styles.headerBarIcon} source={require('../../Sources/Images/icon-back.png')} />
             </View>
             <View style={styles.headerBarCenterWrap}>
-              <Text style={styles.headerBarText}>Chat</Text>
+              <Text style={styles.headerBarTitle}>Chat</Text>
             </View>
             <View style={styles.headerBarRightWrap}>
-              <Text style={styles.headerBarText}>Setting</Text>
+              <Text style={styles.headerBarText}>{rightText}</Text>
             </View>
           </View>
         </View>
