@@ -103,6 +103,7 @@ export default class App extends React.Component {
               this.subscription = null;
             }
             recOn.play();
+            // setTimeout(), recOn.stop();, Tts.stop();
             // STT Event Listener
             // this.subscription = NativeAppEventEmitter.addListener(
             //   'SpeechToText',
@@ -136,6 +137,12 @@ export default class App extends React.Component {
       this.subscription.remove();
       this.subscription = null;
     }
+  }
+
+  joinRoom() {
+    this.setState({
+      pageState: 'Chat'
+    })
   }
 
   logChange(err) {
@@ -293,10 +300,14 @@ export default class App extends React.Component {
         }
         {
           this.state.pageState === 'List' &&
-          <ListCom />
+          <ListCom
+            joinRoom={() => {
+              this.joinRoom();
+            }}
+          />
         }
         {
-          this.state.pageState === 'Chat' && // this.state.login &&
+          this.state.pageState === 'Chat' && //false &&// this.state.login &&
           <IntroModal
             modalVisible={this.state.modalVisible}
             text={this.state.text}

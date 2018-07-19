@@ -47,7 +47,12 @@ export default class ListCom extends React.Component {
             })
           }}
         >
-          <ChatList selectedTab={this.state.selectedTab} />
+          <ChatList
+            selectedTab={this.state.selectedTab}
+            joinRoom={() => {
+              this.props.joinRoom();
+            }}
+          />
         </TabBarIOS.Item>
         <TabBarIOS.Item
           selected={this.state.selectedTab === 'Settings'}

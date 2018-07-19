@@ -48,7 +48,6 @@ const listHeaderBarStyles = StyleSheet.create({
     paddingLeft: 16,
     paddingRight: 16,
     paddingTop: 26,
-    marginBottom: 30,
     height: 64,
     flexDirection: 'row',
     alignItems: 'center',

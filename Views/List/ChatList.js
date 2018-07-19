@@ -2,6 +2,7 @@ import React from 'react';
 import { ScrollView, StatusBar, StyleSheet, TouchableOpacity, Button, Text, View } from 'react-native';
 import styles from './ListStyles/ListStyles.js';
 import ListHeaderBar from './ListHeaderBar.js';
+import ChatListEntry from './ChatListEntry.js';
 
 export default class ChatList extends React.Component {
 
@@ -14,12 +15,43 @@ export default class ChatList extends React.Component {
   }
 
   render() {
-    let renderData = null;
-    if (this.props.MyMsgs) {
-      renderData = <ChatRightMsgs msgDatas={this.props.MyMsgs} />
-    } else if (this.props.username) {
-      renderData = <ChatNotice username={this.props.username} />
-    }
+    var dummyData = [{
+      roomTitle: ['대화에 참여한 사람'],
+      lastMessage: '마지막 메시지 입니다.',
+      lastDate: '마지막 메시지의 날짜'
+    },
+    {
+      roomTitle: ['대화에 참여한 사람'],
+      lastMessage: '마지막 메시지 입니다.',
+      lastDate: '마지막 메시지의 날짜'
+    },
+    {
+      roomTitle: ['대화에 참여한 사람'],
+      lastMessage: '마지막 메시지 입니다.',
+      lastDate: '마지막 메시지의 날짜'
+    },
+    {
+      roomTitle: ['대화에 참여한 사람'],
+      lastMessage: '마지막 메시지 입니다.',
+      lastDate: '마지막 메시지의 날짜'
+    },
+    {
+      roomTitle: ['대화에 참여한 사람'],
+      lastMessage: '마지막 메시지 입니다.',
+      lastDate: '마지막 메시지의 날짜'
+    },
+    {
+      roomTitle: ['대화에 참여한 사람'],
+      lastMessage: '마지막 메시지 입니다.',
+      lastDate: '마지막 메시지의 날짜'
+    },
+    {
+      roomTitle: ['대화에 참여한 사람'],
+      lastMessage: '마지막 메시지 입니다.',
+      lastDate: '마지막 메시지의 날짜'
+    },
+    ];
+
     return (
       <View style={styles.container}>
         <StatusBar barStyle="dark-content" />
@@ -29,10 +61,17 @@ export default class ChatList extends React.Component {
           ref="scrollView"
         // onLayout={() => this.scrollToEnd()}
         >
-          <Text>ChatListChatListChatListChatListChatListChatListChatListChatList
-          ChatListChatListChatListChatListChatListChatListChatListChatListChatList
-          ChatListChatListChatListChatListChatList
-          </Text>
+          {
+            dummyData.map((data, idx) => {
+              return <ChatListEntry
+                key={idx}
+                renderData={data}
+                joinRoom={() => {
+                  this.props.joinRoom();
+                }}
+              />
+            })
+          }
         </ScrollView >
       </View>
     );
