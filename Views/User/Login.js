@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, AlertIOS, StatusBar, ImageBackground, TextInput, Text, TouchableHighlight, Image, StyleSheet } from 'react-native';
-
+import { AccessToken, LoginManager } from 'react-native-fbsdk';
+import firebase from 'react-native-firebase';
 
 export default class Login extends Component {
   constructor(props) {
@@ -8,6 +9,73 @@ export default class Login extends Component {
     this.state = {
       emailValue: null,
       pwValue: null,
+      userData: null,
+    }
+  }
+
+  authenticate(token) {
+    const provider = firebase.auth.FacebookAuthProvider
+    const credential = provider.credential(token)
+
+    let ret = firebase.auth().signInWithCredential(credential)
+
+    return ret;
+  }
+
+  createUser(uid, userDatas, token, dp) {
+    const defaults = {
+      uid,
+      token,
+      dp,
+      ageRange: [20, 30]
+    }
+    firebase.database().ref('users').child(uid).update({ ...userDatas, ...defaults })
+  }
+
+  fbBtnAction() {
+    onLoginOrRegister = () => {
+      LoginManager.logInWithReadPermissions(['public_profile', 'email', 'user_friends'])
+        .then((result) => this._handleCallBack(result),
+          function (error) {
+            alert('Login fail with error: ' + error);
+          }
+        )
+    }
+    onLoginOrRegister();
+  }
+
+  _handleCallBack(result) {
+    let _this = this;
+    if (result.isCancelled) {
+      alert('Login cancelled');
+    } else {
+      AccessToken.getCurrentAccessToken().then((data) => {
+        const token = data.accessToken;
+        fetch('https://graph.facebook.com/v2.8/me?fields=id,first_name,last_name,gender,birthday,email&access_token=' + token)
+          .then((response) => response.json())
+          .then((json) => {
+            _this.setState({
+              userData: json,
+            })
+            const imageSize = 120;
+            const facebookID = json.id;
+            const fbImage = `https://graph.facebook.com/${facebookID}/picture?height=${imageSize}`
+            this.authenticate(data.accessToken)
+              .then(function (result) {
+                console.warn('result', result)
+                const { uid } = result
+                _this.createUser(uid, json, token, fbImage)
+              }).catch(function (err) {
+                console.warn(err)
+                //alert('Login fail with error: ' + err);
+              });
+          })
+          .catch(function (err) {
+            // console.warn(err)
+            //alert('Login fail with error: ' + err);
+            return err;
+          });
+      })
     }
   }
 
@@ -66,7 +134,7 @@ export default class Login extends Component {
           <Text style={{ color: '#fff', opacity: 0.9, }}>아직 회원이 아니신가요?</Text>
         </View>
         <View style={LoginStyles.fbBtnSection}>
-          <TouchableHighlight style={LoginStyles.fbLoginBtn}>
+          <TouchableHighlight style={LoginStyles.fbLoginBtn} onPress={this.fbBtnAction.bind(this)}>
             <Text style={{ color: '#fff', opacity: 0.9, fontWeight: 'bold', }}>페북으로 로그인</Text>
           </TouchableHighlight>
         </View>
