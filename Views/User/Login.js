@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, AlertIOS, StatusBar, ImageBackground, TextInput, Text, TouchableHighlight, Image, StyleSheet } from 'react-native';
-import { AccessToken, LoginManager } from 'react-native-fbsdk';
+// import { AccessToken, LoginManager } from 'react-native-fbsdk';
 import firebase from 'react-native-firebase';
 
 export default class Login extends Component {
@@ -10,74 +10,81 @@ export default class Login extends Component {
       emailValue: null,
       pwValue: null,
       userData: null,
+      userDatas: null,
     }
   }
 
-  authenticate(token) {
-    const provider = firebase.auth.FacebookAuthProvider
-    const credential = provider.credential(token)
 
-    let ret = firebase.auth().signInWithCredential(credential)
-
-    return ret;
-  }
-
-  createUser(uid, userDatas, token, dp) {
-    const defaults = {
-      uid,
-      token,
-      dp,
-      ageRange: [20, 30]
+  componentDidMount() {
+    if (this.props.joinedUserDatas) {
+      console.warn(this.props.joinedUserDatas)
     }
-    firebase.database().ref('users').child(uid).update({ ...userDatas, ...defaults })
   }
+  // authenticate(token) {
+  //   const provider = firebase.auth.FacebookAuthProvider
+  //   const credential = provider.credential(token)
+
+  //   let ret = firebase.auth().signInWithCredential(credential)
+
+  //   return ret;
+  // }
+
+  // createUser(uid, userDatas, token, dp) {
+  //   const defaults = {
+  //     uid,
+  //     token,
+  //     dp,
+  //     ageRange: [20, 30]
+  //   }
+  //   firebase.database().ref('users').child(uid).update({ ...userDatas, ...defaults })
+  // }
 
   fbBtnAction() {
-    onLoginOrRegister = () => {
-      LoginManager.logInWithReadPermissions(['public_profile', 'email', 'user_friends'])
-        .then((result) => this._handleCallBack(result),
-          function (error) {
-            alert('Login fail with error: ' + error);
-          }
-        )
-    }
-    onLoginOrRegister();
+    //   onLoginOrRegister = () => {
+    //     LoginManager.logInWithReadPermissions(['public_profile', 'email', 'user_friends'])
+    //       .then((result) => this._handleCallBack(result),
+    //         function (error) {
+    //           alert('Login fail with error: ' + error);
+    //         }
+    //       )
+    //   }
+    //   onLoginOrRegister();
   }
 
-  _handleCallBack(result) {
-    let _this = this;
-    if (result.isCancelled) {
-      alert('Login cancelled');
-    } else {
-      AccessToken.getCurrentAccessToken().then((data) => {
-        const token = data.accessToken;
-        fetch('https://graph.facebook.com/v2.8/me?fields=id,first_name,last_name,gender,birthday,email&access_token=' + token)
-          .then((response) => response.json())
-          .then((json) => {
-            _this.setState({
-              userData: json,
-            })
-            const imageSize = 120;
-            const facebookID = json.id;
-            const fbImage = `https://graph.facebook.com/${facebookID}/picture?height=${imageSize}`
-            this.authenticate(data.accessToken)
-              .then(function (result) {
-                console.warn('result', result)
-                const { uid } = result
-                _this.createUser(uid, json, token, fbImage)
-              }).catch(function (err) {
-                console.warn(err)
-                //alert('Login fail with error: ' + err);
-              });
-          })
-          .catch(function (err) {
-            // console.warn(err)
-            //alert('Login fail with error: ' + err);
-            return err;
-          });
-      })
-    }
-  }
+  // _handleCallBack(result) {
+  //   let _this = this;
+  //   if (result.isCancelled) {
+  //     alert('Login cancelled');
+  //   } else {
+  //     AccessToken.getCurrentAccessToken().then((data) => {
+  //       const token = data.accessToken;
+  //       fetch('https://graph.facebook.com/v2.8/me?fields=id,first_name,last_name,gender,birthday,email&access_token=' + token)
+  //         .then((response) => response.json())
+  //         .then((json) => {
+  //           _this.setState({
+  //             userData: json,
+  //           })
+  //           const imageSize = 120;
+  //           const facebookID = json.id;
+  //           const fbImage = `https://graph.facebook.com/${facebookID}/picture?height=${imageSize}`
+  //           this.authenticate(data.accessToken)
+  //             .then(function (result) {
+  //               console.warn('result', result)
+  //               const { uid } = result
+  //               _this.createUser(uid, json, token, fbImage)
+  //             }).catch(function (err) {
+  //               console.warn(err)
+  //               //alert('Login fail with error: ' + err);
+  //             });
+  //         })
+  //         .catch(function (err) {
+  //           // console.warn(err)
+  //           //alert('Login fail with error: ' + err);
+  //           return err;
+  //         });
+  //     })
+  //   }
+  // }
 
   inputEmail(value) {
     this.setState({
@@ -94,14 +101,36 @@ export default class Login extends Component {
   }
 
   loginCheck() {
-    if (this.state.emailValue === 'admin' && this.state.pwValue === 'dj1234') {
-      this.props.logChange();
-    } else {
+    if (!this.state.emailValue || !this.state.pwValue) {
       AlertIOS.alert(
-        this.props.emailValue // + this.props.pwValue + '아이디와 비밀번호가 일치하지 않습니다.'
+        '아이디 혹은 비밀번호가 입력되지 않았습니다.'
       );
-      this.props.logChange('err');
+      return;
     }
+    this.props.joinedUserDatas.forEach((userdata, i) => {
+      if (this.state.emailValue === userdata.emailValue && this.state.pwValue === userdata.pwValue) {
+        this.props.onSession(userdata);
+        this.props.logChange();
+      } else if (this.state.emailValue === userdata.emailValue && this.state.pwValue !== userdata.pwValue) {
+        AlertIOS.alert(
+          '아이디와 비밀번호가 일치하지 않습니다.'
+        );
+      } else if (this.state.emailValue !== userdata.emailValue && i === this.props.joinedUserDatas.length - 1) {
+        AlertIOS.alert(
+          '가입되지 않은 사용자입니다.'
+        );
+        this.props.moveToJoin();
+      }
+    })
+
+    // if (this.state.emailValue === 'admin' && this.state.pwValue === 'dj1234') {
+    //   this.props.logChange();
+    // } else {
+    //   AlertIOS.alert(
+    //     this.props.emailValue // + this.props.pwValue + '아이디와 비밀번호가 일치하지 않습니다.'
+    //   );
+    //   this.props.logChange('err');
+    // }
   }
 
   render() {
@@ -131,7 +160,7 @@ export default class Login extends Component {
         <View style={LoginStyles.linkSection}>
           <Text style={{ color: '#fff', opacity: 0.9, }}>비밀번호를 잊으셨나요?</Text>
           <Text style={LoginStyles.linkTextBlank}> | </Text>
-          <Text style={{ color: '#fff', opacity: 0.9, }}>아직 회원이 아니신가요?</Text>
+          <Text onPress={() => { this.props.moveToJoin() }} style={{ color: '#fff', opacity: 0.9, }}>아직 회원이 아니신가요?</Text>
         </View>
         <View style={LoginStyles.fbBtnSection}>
           <TouchableHighlight style={LoginStyles.fbLoginBtn} onPress={this.fbBtnAction.bind(this)}>

@@ -15,16 +15,24 @@ export default class FriendListEntry extends React.Component {
 
 
   render() {
+    // var dummyData = [{
+    //   recordID: 'ewfjgoi2io!1nv2h3brj2',
+    //   familyName: '김',
+    //   givenName: '동준',
+    //   phoneNumber: '010-5874-4778'
+    // }
+    // ];
+    var userName = this.props.renderData.familyName + this.props.renderData.givenName;
     return (
       <View style={{ flex: 1, }}>
         <TouchableOpacity onPress={this.props.createRoom.bind(this, this.props.renderData.userName)} style={FriendListEntryStyles.container}>
           <View style={FriendListEntryStyles.avatar}>
             <Text style={FriendListEntryStyles.avatarText}>
-              {this.getAvatarText(this.props.renderData.userName)}
+              {this.getAvatarText(userName)}
             </Text>
           </View>
           <View style={FriendListEntryStyles.firstColumn}>
-            <Text style={FriendListEntryStyles.userName}>{this.props.renderData.userName}</Text>
+            <Text style={FriendListEntryStyles.userName}>{userName}</Text>
             <View style={FriendListEntryStyles.lastDateWrap}>
             </View>
           </View>
@@ -49,7 +57,7 @@ const FriendListEntryStyles = StyleSheet.create({
     flexDirection: 'row',
   },
   firstColumn: {
-    flex: 1,
+    flex: 6,
     flexDirection: 'row',
   },
   secondColumn: {

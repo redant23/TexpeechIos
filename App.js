@@ -1,12 +1,14 @@
 import React from 'react';
-import { StyleSheet, View, NativeAppEventEmitter, NativeModules, NativeEventEmitter } from 'react-native';
+import { AlertIOS, StyleSheet, View, NativeAppEventEmitter, NativeModules, NativeEventEmitter } from 'react-native';
 // import facebookLogin from './Views/User/Login.js';
 import Intro from './Views/Intro/Intro.js';
 import Chat from './Views/Chat/Chat.js';
 import IntroModal from './Views/Modal/IntroModal.js';
 import PropTypes from 'prop-types';
 import Login from './Views/User/Login.js';
+import Join from './Views/User/Join.js';
 import ListCom from './Views/List/ListCom.js';
+import ContactsList from './Views/User/ContactsList.js';
 
 import firebase from './Settings/Firebase.js';
 
@@ -38,8 +40,6 @@ var sendSuccess = new Sound('send-success.wav', Sound.MAIN_BUNDLE, (error) => {
 });
 
 
-
-
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -48,17 +48,18 @@ export default class App extends React.Component {
       eventNumber: 0,//firebase에서 시작할 때 불러오자.
       currentDatas: null,
       modalVisible: true,
-      pageState: 'Login',
+      pageState: 'Join',
       toggleValue: false,
       myMsgs: null,
       sttResults: null,
       voiceMode: false,
       sttCount: 0,
+      joinedUserDatas: null,
+      joinedUserCount: 0,//firebase에서 시작할 때 불러오자.
     }
   }
 
   componentDidMount() {
-
     // TTS Event Language Setting
     Tts.setDefaultLanguage('ko-KR');
 
@@ -68,13 +69,34 @@ export default class App extends React.Component {
     ee.addListener('tts-finish', () => { });
     ee.addListener('tts-cancel', () => { });
 
-    // ** Chat Load Datas from Access Firebase  **
+    // ** User Load Datas from Access Firebase  **
     var renderData;
+    var userRenderData;
     var latestEventNumber = 0;
+    var latestUserNumber = 0;
+    var userRef = firebase.database().ref('user-datas');
+    userRef.on('value', (snapshot) => {
+      userRenderData = snapshot.val();
+      if (!userRenderData) {
+        latestUserNumber = -1;
+      } else {
+        latestUserNumber = userRenderData.length - 1;
+      }
+      this.setState({
+        joinedUserDatas: userRenderData,
+        joinedUserCount: latestUserNumber,
+      });
+    });
+
+    // ** Chat Load Datas from Access Firebase  **
     var eventRef = firebase.database().ref('event-datas');
     eventRef.on('value', (snapshot) => {
       renderData = snapshot.val();
-      latestEventNumber = renderData.length - 1;
+      if (!renderData) {
+        latestEventNumber = -1;
+      } else {
+        latestEventNumber = renderData.length - 1;
+      }
       if (this.state.voiceMode) {
         SpeechToText.finishRecognition();
         if (this.subscription != null) {
@@ -132,6 +154,18 @@ export default class App extends React.Component {
     });
   }
 
+  addJoinUsers(newUserData) {
+    // ** Firebase User Join code **
+    var UserData = this.onSession(newUserData);
+    var joinedUserCount = this.state.joinedUserCount + 1;
+    var userRef = firebase.database().ref(`/user-datas/${joinedUserCount}`);
+    userRef.update(UserData);
+    AlertIOS.alert('가입성공');
+
+    this.backAction();
+    return;
+  }
+
   backAction() {
     this.setState({
       pageState: 'List'
@@ -163,6 +197,38 @@ export default class App extends React.Component {
         pageState: 'List'
       })
     }
+  }
+  moveToJoin() {
+    this.setState({
+      pageState: 'Join'
+    })
+  }
+
+  moveToLogin() {
+    this.setState({
+      pageState: 'Login'
+    })
+  }
+
+  onSession(userData) {
+    let onSessionUserData = userData;
+    onSessionUserData.state = 'loggedIn';
+    onSessionUserData.updated_at = Date().toLocaleString().slice(4, 21);
+    return onSessionUserData;
+  }
+
+  onSessionUpdate(userData) {
+    let sessionChangeTarget = null;
+    let onSessionUserData = this.onSession(userData);
+
+    this.state.joinedUserDatas.forEach((userdata, i) => {
+      if (onSessionUserData.emailValue === userdata.emailValue) {
+        sessionChangeTarget = i;
+        return;
+      }
+    })
+    var onSessionRef = firebase.database().ref(`/user-datas/${sessionChangeTarget}`);
+    onSessionRef.update(onSessionUserData);
   }
 
   onSpeak() {
@@ -266,7 +332,7 @@ export default class App extends React.Component {
         this.subscription = null;
       }
       voiceModeOn.play();
-      setTimeout(() => { Tts.speak("보이스 모드 작동. 아래 '음성모드 사용중'을 탭하고 말을 한 후 끝에 '전송'이라고 하면 전송됩니다.") }, 500);
+      setTimeout(() => { Tts.speak("보이스 모드 작동. 아래 '음성모드 사용중'을 탭하고 말을 한 후, 끝에 '전송'이라고 하면 전송됩니다.") }, 500);
     } else {
       Tts.stop();
       SpeechToText.finishRecognition();
@@ -308,6 +374,20 @@ export default class App extends React.Component {
             logChange={(err) => {
               this.logChange(err);
             }}
+            joinedUserDatas={this.state.joinedUserDatas}
+            moveToJoin={() => { this.moveToJoin() }}
+            onSession={(userdata) => { this.onSessionUpdate(userdata) }}
+          />
+        }
+        {
+          this.state.pageState === 'ContactsList' &&
+          <ContactsList />
+        }
+        {
+          this.state.pageState === 'Join' &&
+          <Join
+            addJoinUsers={(newUserData) => { this.addJoinUsers(newUserData) }}
+            moveToLogin={() => { this.moveToLogin() }}
           />
         }
         {
