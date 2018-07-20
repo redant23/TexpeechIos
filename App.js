@@ -132,6 +132,12 @@ export default class App extends React.Component {
     });
   }
 
+  backAction() {
+    this.setState({
+      pageState: 'List'
+    })
+  }
+
   componentWillUnmount() {
     if (this.subscription != null) {
       this.subscription.remove();
@@ -345,6 +351,9 @@ export default class App extends React.Component {
             }}
             onSpeak={() => {
               this.onSpeak();
+            }}
+            backAction={() => {
+              this.backAction();
             }}
           />
         }

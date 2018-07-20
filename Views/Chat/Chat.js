@@ -29,7 +29,9 @@ export default class Chat extends React.Component {
     return (
       <View style={styles.container}>
         <StatusBar barStyle="dark-content" />
-        <ChatHeaderBar />
+        <ChatHeaderBar
+          backAction={() => { this.props.backAction() }}
+        />
         <ScrollView
           style={styles.scrollContainer}
           ref="scrollView"
