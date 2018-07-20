@@ -48,7 +48,7 @@ export default class App extends React.Component {
       eventNumber: 0,//firebase에서 시작할 때 불러오자.
       currentDatas: null,
       modalVisible: true,
-      pageState: 'Join',
+      pageState: 'intro',
       toggleValue: false,
       myMsgs: null,
       sttResults: null,
@@ -56,6 +56,7 @@ export default class App extends React.Component {
       sttCount: 0,
       joinedUserDatas: null,
       joinedUserCount: 0,//firebase에서 시작할 때 불러오자.
+      currentUserName: null,
     }
   }
 
@@ -161,8 +162,10 @@ export default class App extends React.Component {
     var userRef = firebase.database().ref(`/user-datas/${joinedUserCount}`);
     userRef.update(UserData);
     AlertIOS.alert('가입성공');
-
-    this.backAction();
+    this.setState({
+      currentUserName: newUserData.username,
+    })
+    this.pageStateChange('List');
     return;
   }
 
@@ -181,14 +184,6 @@ export default class App extends React.Component {
 
   createRoom() {
 
-  }
-
-  joinRoom(roomName) {
-    if (roomName === '관리자방') {
-      this.setState({
-        pageState: 'Chat'
-      })
-    }
   }
 
   logChange(err) {
@@ -220,15 +215,20 @@ export default class App extends React.Component {
   onSessionUpdate(userData) {
     let sessionChangeTarget = null;
     let onSessionUserData = this.onSession(userData);
-
+    let currentUserName = null;
     this.state.joinedUserDatas.forEach((userdata, i) => {
       if (onSessionUserData.emailValue === userdata.emailValue) {
         sessionChangeTarget = i;
+        currentUserName = userdata.username;
         return;
       }
     })
     var onSessionRef = firebase.database().ref(`/user-datas/${sessionChangeTarget}`);
     onSessionRef.update(onSessionUserData);
+
+    this.setState({
+      currentUserName: currentUserName,
+    });
   }
 
   onSpeak() {
@@ -261,7 +261,7 @@ export default class App extends React.Component {
       var eventData = {
         type: 'Msg',
         created_at: Date().toLocaleString().slice(4, 21),
-        nickname: this.state.username,
+        nickname: this.state.currentUserName,
         message: {
           text: text,
           on_voice_mode: false,
@@ -271,7 +271,7 @@ export default class App extends React.Component {
       var eventData = {
         type: 'Msg',
         created_at: Date().toLocaleString().slice(4, 21),
-        nickname: this.state.username,
+        nickname: this.state.currentUserName,
         message: {
           text: text,
           on_voice_mode: true,
@@ -287,21 +287,27 @@ export default class App extends React.Component {
     sendSuccess.play();
   }
 
-  setModalVisible(visible) {
+  joinChatRoom() {
     let eventData = {
       type: 'join',
       created_at: Date().toLocaleString().slice(4, 21),
-      nickname: this.state.username,
+      nickname: this.state.currentUserName,
     }
     let eventNumber = this.state.eventNumber + 1;
     // ** Firebase User Join code **
     var eventRef = firebase.database().ref(`/event-datas/${eventNumber}`);
     eventRef.update(eventData);
     var userRef = firebase.database().ref(`/current-users/${eventNumber}`);
-    userRef.update({ nickname: this.state.username });
-    this.setState({
-      modalVisible: visible,
-    });
+    userRef.update({ nickname: this.state.currentUserName });
+  }
+
+  joinRoom(roomName) {
+    if (roomName === '관리자방') {
+      this.joinChatRoom();
+      this.setState({
+        pageState: 'Chat'
+      });
+    }
   }
 
   sttAction(sttResult) {
@@ -399,10 +405,11 @@ export default class App extends React.Component {
             createRoom={() => {
               this.createRoom();
             }}
+            currentUserName={this.state.currentUserName}
           />
         }
         {
-          this.state.pageState === 'Chat' && //false &&// this.state.login &&
+          this.state.pageState === 'Chat' && false &&// this.state.login &&
           <IntroModal
             modalVisible={this.state.modalVisible}
             text={this.state.text}
@@ -428,7 +435,7 @@ export default class App extends React.Component {
           <Chat
             currentDatas={this.state.currentDatas}
             myMsgs={this.state.myMsgs}
-            username={this.state.username}
+            username={this.state.currentUserName}
             userDatas={this.state.users}
             msgDatas={this.state.messages}
             toggleValue={this.state.toggleValue}

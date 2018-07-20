@@ -3,25 +3,32 @@ import { ScrollView, StatusBar, TouchableOpacity, Button, Text, View } from 'rea
 import styles from './ListStyles/ListStyles.js';
 import ListHeaderBar from './ListHeaderBar.js';
 import FriendListEntry from './FriendListEntry.js';
-
+var Contacts = require('react-native-contacts');
 
 export default class FriendList extends React.Component {
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      mobileContacts: null,
+    }
+  }
   scrollToEnd() {
 
   }
 
   componentDidUpdate() {
+    Contacts.getAll((err, contacts) => {
+      if (err) throw err;
 
+      // contacts returned
+      this.setState({
+        mobileContacts: contacts
+      })
+    })
   }
 
   render() {
-    let renderData = null;
-    var dummyData = [{
-      userName: '홍길동',
-      lastDate: '마지막 메시지의 날짜'
-    }
-    ];
+
     return (
       <View style={styles.container}>
         <StatusBar barStyle="dark-content" />
@@ -31,9 +38,10 @@ export default class FriendList extends React.Component {
           ref="scrollView"
         >
           {
-            dummyData.map((data, idx) => {
+            this.state.mobileContacts &&
+            this.state.mobileContacts.map((data) => {
               return <FriendListEntry
-                key={idx}
+                key={data.recordID}
                 renderData={data}
                 createRoom={(value) => {
                   console.warn(value);

@@ -14,12 +14,6 @@ export default class Login extends Component {
     }
   }
 
-
-  componentDidMount() {
-    if (this.props.joinedUserDatas) {
-      console.warn(this.props.joinedUserDatas)
-    }
-  }
   // authenticate(token) {
   //   const provider = firebase.auth.FacebookAuthProvider
   //   const credential = provider.credential(token)
@@ -107,19 +101,24 @@ export default class Login extends Component {
       );
       return;
     }
+    let chkCount = 0;
     this.props.joinedUserDatas.forEach((userdata, i) => {
       if (this.state.emailValue === userdata.emailValue && this.state.pwValue === userdata.pwValue) {
         this.props.onSession(userdata);
         this.props.logChange();
+        return;
       } else if (this.state.emailValue === userdata.emailValue && this.state.pwValue !== userdata.pwValue) {
         AlertIOS.alert(
           '아이디와 비밀번호가 일치하지 않습니다.'
         );
-      } else if (this.state.emailValue !== userdata.emailValue && i === this.props.joinedUserDatas.length - 1) {
-        AlertIOS.alert(
-          '가입되지 않은 사용자입니다.'
-        );
-        this.props.moveToJoin();
+      } else if (this.state.emailValue !== userdata.emailValue) {
+        if (chkCount === this.props.joinedUserDatas.length - 1) {
+          AlertIOS.alert(
+            '가입되지 않은 사용자입니다.'
+          );
+          return;
+        }
+        chkCount++;
       }
     })
 

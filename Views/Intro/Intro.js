@@ -25,7 +25,7 @@ export default class Intro extends React.Component {
         <View style={styles.btnWrap}>
           <TouchableHighlight
             underlayColor={'#7A47C2'}
-            onPress={this.props.pageStateChange.bind(this, 'Chat')}
+            onPress={this.props.pageStateChange.bind(this, 'Join')}
             style={styles.startButton}
             accessibilityLabel="Get Started button"
           >

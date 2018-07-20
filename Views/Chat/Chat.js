@@ -19,6 +19,8 @@ export default class Chat extends React.Component {
     this.scrollToEnd();
   }
 
+
+
   render() {
     let renderData = null;
     if (this.props.MyMsgs) {

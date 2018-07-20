@@ -14,8 +14,6 @@ export default class Join extends Component {
     }
   }
 
-
-
   changeState(type, value) {
     if (type === 'name') {
       this.setState({

@@ -57,6 +57,7 @@ export default class ListCom extends React.Component {
             joinRoom={(roomName) => {
               this.props.joinRoom(roomName);
             }}
+            currentUserName={this.props.currentUserName}
           />
         </TabBarIOS.Item>
         <TabBarIOS.Item
