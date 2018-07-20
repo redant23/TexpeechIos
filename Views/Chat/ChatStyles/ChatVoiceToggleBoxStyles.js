@@ -5,7 +5,7 @@ const ChatVoiceToggleBoxStyles = StyleSheet.create({
   voiceModeToggleBox: {
     position: 'absolute',
     right: 20,
-    top: 104,
+    top: 84,
     width: 140,
     height: 50,
     backgroundColor: '#fff',

@@ -34,7 +34,12 @@ export default class ListCom extends React.Component {
             })
           }}
         >
-          <FriendList selectedTab={this.state.selectedTab} />
+          <FriendList
+            selectedTab={this.state.selectedTab}
+            createRoom={() => {
+              this.props.createRoom();
+            }}
+          />
         </TabBarIOS.Item>
         <TabBarIOS.Item
           selected={this.state.selectedTab === 'Chats'}
@@ -49,8 +54,8 @@ export default class ListCom extends React.Component {
         >
           <ChatList
             selectedTab={this.state.selectedTab}
-            joinRoom={() => {
-              this.props.joinRoom();
+            joinRoom={(roomName) => {
+              this.props.joinRoom(roomName);
             }}
           />
         </TabBarIOS.Item>

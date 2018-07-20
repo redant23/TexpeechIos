@@ -61,6 +61,16 @@ export default class ChatList extends React.Component {
           ref="scrollView"
         // onLayout={() => this.scrollToEnd()}
         >
+          <ChatListEntry
+            renderData={{
+              roomTitle: '관리자방',
+              lastMessage: '테스트방!',
+              lastDate: '2222년 1월 1일 1시 1분'
+            }}
+            joinRoom={(roomName) => {
+              this.props.joinRoom(roomName);
+            }}
+          />
           {
             dummyData.map((data, idx) => {
               return <ChatListEntry

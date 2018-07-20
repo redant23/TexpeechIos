@@ -145,10 +145,16 @@ export default class App extends React.Component {
     }
   }
 
-  joinRoom() {
-    this.setState({
-      pageState: 'Chat'
-    })
+  createRoom() {
+
+  }
+
+  joinRoom(roomName) {
+    if (roomName === '관리자방') {
+      this.setState({
+        pageState: 'Chat'
+      })
+    }
   }
 
   logChange(err) {
@@ -307,8 +313,11 @@ export default class App extends React.Component {
         {
           this.state.pageState === 'List' &&
           <ListCom
-            joinRoom={() => {
-              this.joinRoom();
+            joinRoom={(roomName) => {
+              this.joinRoom(roomName);
+            }}
+            createRoom={() => {
+              this.createRoom();
             }}
           />
         }

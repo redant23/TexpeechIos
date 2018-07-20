@@ -12,18 +12,7 @@ export default class ChatListEntry extends React.Component {
 
     return (
       <View style={{ flex: 1, }}>
-        <TouchableOpacity onPress={() => { this.props.joinRoom() }} style={ChatListEntryStyles.container}>
-          <View style={ChatListEntryStyles.firstColumn}>
-            <Text style={ChatListEntryStyles.roomTitle}>관리자 방</Text>
-            <View style={ChatListEntryStyles.lastDateWrap}>
-              <Text style={ChatListEntryStyles.lastDate}>2222년 1월 1일 1시 1분</Text>
-            </View>
-          </View>
-          <View style={ChatListEntryStyles.secondColumn}>
-            <Text style={ChatListEntryStyles.lastMessage}>테스트방!</Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity style={ChatListEntryStyles.container}>
+        <TouchableOpacity onPress={() => { this.props.joinRoom(this.props.renderData.roomTitle) }} style={ChatListEntryStyles.container}>
           <View style={ChatListEntryStyles.firstColumn}>
             <Text style={ChatListEntryStyles.roomTitle}>{this.props.renderData.roomTitle}</Text>
             <View style={ChatListEntryStyles.lastDateWrap}>
