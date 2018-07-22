@@ -4,7 +4,8 @@
 
 **Texpeech**는 음성 또는 텍스트로만 소통가능한 상황의 사용자를 소통 가능하게 해주는 메신저 앱입니다.
 
-![ScreenShot](https://t1.daumcdn.net/thumb/R1280x0/?fname=http://t1.daumcdn.net/brunch/service/user/1aNR/image/5OR_bkXXvktMzk1_OaRzw0r1i6A.png =250x)
+![ScreenShot](https://t1.daumcdn.net/thumb/R1280x0/?fname=http://t1.daumcdn.net/brunch/service/user/1aNR/image/5OR_bkXXvktMzk1_OaRzw0r1i6A.png)
+{:.some-css-class style="width: 200px"}
 ![ScreenShot](https://t1.daumcdn.net/thumb/R1280x0/?fname=http://t1.daumcdn.net/brunch/service/user/1aNR/image/ehuuMonh83hYf_529Vlz7CbZ1FE.png)
 ![ScreenShot](https://t1.daumcdn.net/thumb/R1280x0/?fname=http://t1.daumcdn.net/brunch/service/user/1aNR/image/H5aex5MXVbB3eXBWYj3PSETZHvQ.png)
 
